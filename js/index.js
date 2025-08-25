@@ -51,14 +51,14 @@ $(document).ready(function () {
       setTimeout(() => {
         // In a real app, you would validate with a server
         // For this demo, we'll check against a hardcoded user
-        if (email === 'user@example.com' && password === 'password123') {
+        if (email === 'user@example.com' && password === 'testapp123') {
           // Successful login
           localStorage.setItem('isLoggedIn', 'true')
           localStorage.setItem('userEmail', email)
           localStorage.setItem('userName', 'John Doe')
 
           // Redirect to homepage
-          window.location.href = './src/pages/homepage.html'
+          window.location.href = './homepage.html'
         } else {
           // Failed login
           errorMessage.text('Invalid email or password. Please try again.')
