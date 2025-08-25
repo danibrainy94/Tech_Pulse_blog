@@ -117,7 +117,7 @@ $(document).ready(function() {
                             "author": "Alex Johnson",
                             "authorInitials": "AJ",
                             "date": "June 15, 2023",
-                            "image": "https://images.unsplash.com/photo-1667372393152-597576c7b44c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "image": "/images/artificial-intelligence.jpg",
                             "tags": ["AI", "Machine Learning", "Generative Models", "ChatGPT"]
                         },
                         {
@@ -128,7 +128,7 @@ $(document).ready(function() {
                             "author": "Sarah Rodriguez",
                             "authorInitials": "SR",
                             "date": "June 10, 2023",
-                            "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "image": "/images/css.jpg",
                             "tags": ["CSS", "Responsive Design", "Web Development", "Frontend"]
                         },
                         {
@@ -139,7 +139,7 @@ $(document).ready(function() {
                             "author": "Michael Thompson",
                             "authorInitials": "MT",
                             "date": "June 5, 2023",
-                            "image": "https://images.unsplash.com/photo-1563013544-8249a7215d47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "image": "/images/cyber-security.jpg",
                             "tags": ["Security", "Zero Trust", "Enterprise", "Network Security"]
                         },
                         {
@@ -150,7 +150,7 @@ $(document).ready(function() {
                             "author": "Jennifer Parker",
                             "authorInitials": "JP",
                             "date": "May 28, 2023",
-                            "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "image": "/images/bitcoin.jpg",
                             "tags": ["Blockchain", "Distributed Ledger", "Supply Chain", "Healthcare"]
                         },
                         {
@@ -161,7 +161,7 @@ $(document).ready(function() {
                             "author": "David Reynolds",
                             "authorInitials": "DR",
                             "date": "May 20, 2023",
-                            "image": "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "image": "/images/server.jpg",
                             "tags": ["Cloud", "Serverless", "AWS", "Azure"]
                         },
                         {
@@ -172,7 +172,7 @@ $(document).ready(function() {
                             "author": "Karen Lee",
                             "authorInitials": "KL",
                             "date": "May 12, 2023",
-                            "image": "https://images.unsplash.com/photo-1519389950473-47ba027bb1cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "image": "/images/smartwatch-8300238_1280.jpg",
                             "tags": ["Wearables", "IoT", "Smart Devices", "Health Tech"]
                         },
                         {
@@ -183,7 +183,7 @@ $(document).ready(function() {
                             "author": "Robert Chen",
                             "authorInitials": "RC",
                             "date": "May 4, 2023",
-                            "image": "https://images.unsplash.com/photo-1616530985888-57b3e5bc1e7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "image": "/images/quantum-computing.jpg",
                             "tags": ["Quantum", "Emerging Tech", "Computing", "Future"]
                         },
                         {
@@ -194,7 +194,7 @@ $(document).ready(function() {
                             "author": "Priya Sharma",
                             "authorInitials": "PS",
                             "date": "April 27, 2023",
-                            "image": "https://images.unsplash.com/photo-1611726110994-8a0d78e3b2b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "image": "/images/react.jpg",
                             "tags": ["React", "JavaScript", "Performance", "Web Development"]
                         }
                     ]
