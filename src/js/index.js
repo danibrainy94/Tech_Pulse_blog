@@ -58,7 +58,7 @@ $(document).ready(function () {
           localStorage.setItem('userName', 'John Doe')
 
           // Redirect to homepage
-          window.location.href = '/src/pages/homepage.html'
+          window.location.href = './src/pages/homepage.html'
         } else {
           // Failed login
           errorMessage.text('Invalid email or password. Please try again.')
