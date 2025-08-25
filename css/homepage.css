@@ -361,7 +361,7 @@ nav a:hover::after {
   gap: 2rem; 
   max-width: 1400px;
   width: 95vw;
-  overflow-x: hidden;
+  overflow: hidden;
   /* margin: 0 -10px; */
   padding: 0 20px;
 }
@@ -391,6 +391,7 @@ nav a:hover::after {
 
 .post-image {
   height: 220px;
+  object-fit: cover;
   overflow: hidden;
   position: relative;
 }
