@@ -1,179 +1,92 @@
 {
-  "articles": [
-    {
-      "id": 1,
-      "title": "The Evolution of Generative AI: Beyond ChatGPT",
-      "category": "Artificial Intelligence",
-      "excerpt": "Exploring the next generation of AI models that are transforming creative industries and pushing the boundaries of what's possible.",
-      "author": "Alex Johnson",
-      "authorInitials": "AJ",
-      "date": "June 15, 2023",
-      "image": "/images/artificial-intelligence.jpg",
-      "tags": ["AI", "Machine Learning", "Generative Models", "ChatGPT"],
-      "content": "The landscape of artificial intelligence has undergone a seismic shift with the emergence of advanced generative models. While ChatGPT captured the public's imagination, the technology has evolved far beyond simple text generation. Today's AI systems can create complex multimedia content, assist in scientific discovery, and even generate code with remarkable accuracy.\n\nThis article explores the latest developments in generative AI, including multimodal models that can process and generate both text and images, video generation systems that create realistic footage from text prompts, and specialized AI tools designed for specific industries like healthcare and engineering.\n\nWe'll examine the technical foundations of these systems, their practical applications, and the ethical considerations that come with increasingly powerful AI capabilities. Whether you're a developer looking to integrate these technologies or simply curious about where AI is heading, this comprehensive guide will provide valuable insights into the future of generative intelligence."
-    },
-    {
-      "id": 2,
-      "title": "Building Responsive UIs with CSS Container Queries",
-      "category": "Web Development",
-      "excerpt": "Container queries are revolutionizing responsive design. Learn how to implement this powerful new CSS feature in your projects today.",
-      "author": "Sarah Rodriguez",
-      "authorInitials": "SR",
-      "date": "June 10, 2023",
-      "image": "/images/css.jpg",
-      "tags": ["CSS", "Responsive Design", "Web Development", "Frontend"],
-      "content": "CSS Container Queries represent a paradigm shift in responsive web design, moving beyond viewport-based media queries to element-based responsiveness. This powerful feature allows components to adapt based on their container's size rather than the entire viewport, enabling truly modular and reusable UI components.\n\nIn this tutorial, we'll dive deep into container queries, covering:\n\n- The fundamental concepts and how they differ from traditional media queries\n- Setting up container query contexts with the @container rule\n- Practical implementation examples for common UI patterns\n- Browser support and fallback strategies\n- Performance considerations and best practices\n\nWe'll build several real-world examples including a card grid that adapts based on available space, a navigation menu that transforms based on its container width, and a data visualization component that adjusts its layout for different contexts.\n\nBy the end of this tutorial, you'll have the knowledge to implement container queries in your projects and create more flexible, context-aware interfaces that provide optimal user experiences across all device sizes."
-    },
-    {
-      "id": 3,
-      "title": "Zero Trust Architecture: The Future of Enterprise Security",
-      "category": "Cybersecurity",
-      "excerpt": "As threats evolve, traditional security models fall short. Discover how Zero Trust is becoming the gold standard for protecting digital assets.",
-      "author": "Michael Thompson",
-      "authorInitials": "MT",
-      "date": "June 5, 2023",
-      "image": "/images/cyber-security.jpg",
-      "tags": ["Security", "Zero Trust", "Enterprise", "Network Security"],
-      "content": "The traditional security model of 'trust but verify' has become increasingly inadequate in today's threat landscape. With sophisticated attacks, remote work, and cloud adoption, organizations need a more robust security framework. Enter Zero Trust Architecture (ZTA) - a security model based on the principle of 'never trust, always verify.'\n\nThis comprehensive guide explores Zero Trust Architecture in depth:\n\n- The core principles of Zero Trust and how they differ from perimeter-based security\n- Key components: identity verification, device security, network segmentation, and least privilege access\n- Implementation roadmap for organizations of different sizes\n- Real-world case studies showing security improvements\n- Common challenges and how to overcome them\n- Integration with existing security tools and systems\n\nWe'll examine how leading companies have successfully implemented Zero Trust to reduce their attack surface, improve threat detection, and respond more effectively to security incidents. Whether you're a security professional or business leader, this article provides actionable insights for securing your organization in an increasingly complex digital world."
-    },
-    {
-      "id": 4,
-      "title": "Beyond Cryptocurrency: Real-World Blockchain Applications",
-      "category": "Blockchain",
-      "excerpt": "Blockchain technology is finding applications far beyond digital currencies. Explore innovative use cases transforming supply chains, healthcare, and more.",
-      "author": "Jennifer Parker",
-      "authorInitials": "JP",
-      "date": "May 28, 2023",
-      "image": "/images/bitcoin.jpg",
-      "tags": [
-        "Blockchain",
-        "Distributed Ledger",
-        "Supply Chain",
-        "Healthcare"
-      ],
-      "content": "While blockchain technology gained fame through cryptocurrencies like Bitcoin, its potential extends far beyond digital money. This distributed ledger technology is now revolutionizing industries with applications that increase transparency, reduce fraud, and streamline complex processes.\n\nIn this article, we explore groundbreaking blockchain implementations across multiple sectors:\n\n- Supply chain management: Tracking products from origin to consumer with immutable records\n- Healthcare: Securing patient records while enabling controlled data sharing\n- Voting systems: Creating transparent, tamper-proof election processes\n- Intellectual property: Verifying ownership and managing digital rights\n- Real estate: Streamlining property transactions and reducing fraud\n\nWe'll examine specific case studies including Walmart's food traceability system, Estonia's national healthcare blockchain, and De Beers' diamond tracking platform. The article also covers the technical considerations for implementing blockchain solutions, including choosing between public and private blockchains, understanding consensus mechanisms, and evaluating when blockchain is truly the right solution for a given problem."
-    },
-    {
-      "id": 5,
-      "title": "Serverless Architecture: Myths vs. Reality",
-      "category": "Cloud Computing",
-      "excerpt": "Serverless computing promises scalability and cost efficiency, but it's not a silver bullet. We separate fact from fiction in this comprehensive guide.",
-      "author": "David Reynolds",
-      "authorInitials": "DR",
-      "date": "May 20, 2023",
-      "image": "/images/quantum-computing.jpg",
-      "tags": ["Cloud", "Serverless", "AWS", "Azure"],
-      "content": "Serverless computing has generated significant buzz in the development community, promising reduced operational overhead, automatic scaling, and pay-per-use pricing. But as adoption grows, so do misconceptions about what serverless truly offers.\n\nThis article cuts through the hype to provide a realistic assessment of serverless architecture:\n\n- Common myths: 'No servers involved,' 'Always cheaper,' 'No scaling concerns'\n- Performance characteristics: cold starts, execution limits, and latency considerations\n- When serverless makes sense (and when it doesn't)\n- Cost analysis comparing serverless to traditional hosting\n- Security implications of the serverless model\n- Vendor lock-in concerns and strategies for mitigation\n\nWe'll walk through a detailed case study comparing a traditional application deployed on virtual machines versus its serverless equivalent, analyzing both technical and business implications. The article also includes practical implementation tips for AWS Lambda, Azure Functions, and Google Cloud Functions, helping you make informed decisions about whether serverless is right for your next project."
-    },
-    {
-      "id": 6,
-      "title": "Wearable Tech 2023: Beyond Fitness Trackers",
-      "category": "Gadgets",
-      "excerpt": "The next generation of wearables is blurring the line between fashion and functionality. Discover the most innovative devices reshaping our relationship with technology.",
-      "author": "Karen Lee",
-      "authorInitials": "KL",
-      "date": "May 12, 2023",
-      "image": "/images/smartwatch-8300238_1280.jpg",
-      "tags": ["Wearables", "IoT", "Smart Devices", "Health Tech"],
-      "content": "Wearable technology has evolved far beyond basic fitness tracking. Today's wearables represent a sophisticated fusion of fashion, health monitoring, and seamless connectivity that's transforming how we interact with technology throughout our day.\n\nThis comprehensive review covers the most innovative wearable technologies of 2023:\n\n- Advanced health monitoring: Continuous glucose monitors, ECG sensors, and stress detection\n- Smart clothing: Fabrics with integrated sensors for athletic performance and medical applications\n- AR glasses: The next frontier in hands-free computing and information access\n- Payment and access integration: Wearables as digital wallets and access control devices\n- Sustainability innovations: Eco-friendly materials and longer product lifecycles\n\nWe'll examine how these devices are moving from niche products to mainstream adoption, with special attention to privacy concerns, battery life improvements, and the integration of AI for personalized insights. The article also includes hands-on reviews of the latest devices from major manufacturers and emerging startups, helping you understand which technologies are truly valuable versus those that are merely gimmicky."
-    },
-    {
-      "id": 7,
-      "title": "The Future of Quantum Computing: What You Need to Know",
-      "category": "Emerging Tech",
-      "excerpt": "Quantum computing is moving from theoretical concept to practical application. Explore the current state and future potential of this revolutionary technology.",
-      "author": "Robert Chen",
-      "authorInitials": "RC",
-      "date": "May 4, 2023",
-      "image": "/images/quantum-computing.jpg",
-      "tags": ["Quantum", "Emerging Tech", "Computing", "Future"],
-      "content": "Quantum computing has transitioned from theoretical physics to practical technology with accelerating speed. What was once confined to research labs is now becoming accessible through cloud platforms, opening new possibilities for solving problems that are intractable for classical computers.\n\nThis in-depth exploration covers:\n\n- Quantum fundamentals: Qubits, superposition, and entanglement explained simply\n- Current hardware approaches: Superconducting, trapped ion, and photonic systems\n- Near-term applications: Quantum chemistry, optimization problems, and machine learning\n- Major players: IBM, Google, Microsoft, and startups pushing the boundaries\n- Programming quantum computers: Qiskit, Cirq, and other development frameworks\n- The road ahead: Error correction, scaling challenges, and timeline predictions\n\nWe'll examine real-world examples where quantum computing is already showing promise, including drug discovery, financial modeling, and materials science. The article also addresses common misconceptions about quantum computing and provides practical guidance for developers and businesses looking to prepare for the quantum era, whether through education, strategic partnerships, or early experimentation with available quantum cloud services."
-    },
-    {
-      "id": 8,
-      "title": "Mastering React Performance Optimization",
-      "category": "Web Development",
-      "excerpt": "Learn advanced techniques to optimize React applications for speed and efficiency, from memoization to code splitting and beyond.",
-      "author": "Priya Sharma",
-      "authorInitials": "PS",
-      "date": "April 27, 2023",
-      "image": "/images/react.jpg",
-      "tags": ["React", "JavaScript", "Performance", "Web Development"],
-      "content": "React's virtual DOM provides excellent performance out of the box, but as applications grow in complexity, performance bottlenecks inevitably emerge. This comprehensive guide covers advanced techniques for optimizing React applications at scale.\n\nWe'll explore:\n\n- Profiling tools: React DevTools, Chrome Performance tab, and custom measurement techniques\n- Component optimization: React.memo, useMemo, and useCallback patterns\n- Render optimization strategies for complex lists and grids\n- Code splitting techniques with React.lazy and Suspense\n- State management optimizations for global state\n- Server-side rendering and static site generation benefits\n- Performance budgets and continuous monitoring\n\nThe article includes detailed code examples demonstrating each optimization technique, along with measurable performance improvements. We'll also examine common anti-patterns that degrade performance and how to avoid them. Whether you're building a small application or a large enterprise platform, these strategies will help ensure your React app delivers a smooth, responsive user experience even as it grows in complexity."
-    }
-  ],
-  "tutorials": [
-    {
-      "id": 101,
-      "title": "Building Your First React Component",
-      "category": "Web Development",
-      "level": "Beginner",
-      "duration": "30 min",
-      "excerpt": "Learn the fundamentals of React components, props, and state in this hands-on tutorial.",
-      "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
-      "steps": [
-        {
-          "title": "Setting Up Your Environment",
-          "content": "First, let's set up your development environment. Install Node.js and create a new React app using Create React App:\n\n```bash\nnpx create-react-app my-first-component\ncd my-first-component\nnpm start\n```",
-          "code": "npx create-react-app my-first-component\ncd my-first-component\nnpm start"
-        },
-        {
-          "title": "Creating a Basic Component",
-          "content": "Components are the building blocks of React applications. Let's create a simple functional component:",
-          "code": "import React from 'react';\n\nfunction Greeting() {\n  return <h1>Hello, React!</h1>;\n}\n\nexport default Greeting;"
-        },
-        {
-          "title": "Adding Props",
-          "content": "Props allow you to pass data to components. Let's modify our component to accept a name prop:",
-          "code": "function Greeting({ name }) {\n  return <h1>Hello, {name}!</h1>;\n}\n\n// Usage:\n// <Greeting name=\"TechPulse\" />"
-        },
-        {
-          "title": "Managing State",
-          "content": "Let's add some interactivity using the useState hook:",
-          "code": "import { useState } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}"
-        },
-        {
-          "title": "Styling Your Component",
-          "content": "Let's add some basic styling using CSS modules:",
-          "code": "// Counter.module.css\n.counter {\n  padding: 20px;\n  border: 1px solid #66999B;\n  border-radius: 8px;\n}\n\n.button {\n  background: #66999B;\n  color: white;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n// Counter.js\nimport styles from './Counter.module.css';\n\nfunction Counter() {\n  // ... existing code\n  return (\n    <div className={styles.counter}>\n      <p>Count: {count}</p>\n      <button \n        className={styles.button}\n        onClick={() => setCount(count + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}"
-        }
-      ]
-    },
-    {
-      "id": 102,
-      "title": "Implementing Authentication in React",
-      "category": "Web Development",
-      "level": "Intermediate",
-      "duration": "45 min",
-      "excerpt": "Learn how to add secure authentication to your React application using JWT and context API.",
-      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
-      "steps": [
-        {
-          "title": "Setting Up Authentication Context",
-          "content": "We'll create an authentication context to manage user state throughout our application:",
-          "code": "import React, { createContext, useState, useEffect, useContext } from 'react';\n\nconst AuthContext = createContext();\n\nexport function AuthProvider({ children }) {\n  const [user, setUser] = useState(null);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    // Check if user is stored in localStorage\n    const storedUser = localStorage.getItem('user');\n    if (storedUser) {\n      setUser(JSON.parse(storedUser));\n    }\n    setLoading(false);\n  }, []);\n\n  // Login function\n  const login = (userData) => {\n    setUser(userData);\n    localStorage.setItem('user', JSON.stringify(userData));\n  };\n\n  // Logout function\n  const logout = () => {\n    setUser(null);\n    localStorage.removeItem('user');\n  };\n\n  const value = {\n    user,\n    loading,\n    login,\n    logout\n  };\n\n  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;\n}\n\nexport function useAuth() {\n  return useContext(AuthContext);\n}"
-        },
-        {
-          "title": "Creating API Service",
-          "content": "Let's create a service to handle authentication requests:",
-          "code": "const API_URL = 'https://api.yourapp.com/auth';\n\nexport const authService = {\n  async login(email, password) {\n    const response = await fetch(`${API_URL}/login`, {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify({ email, password })\n    });\n\n    if (!response.ok) {\n      throw new Error('Login failed');\n    }\n\n    return response.json();\n  },\n\n  async register(userData) {\n    const response = await fetch(`${API_URL}/register`, {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(userData)\n    });\n\n    if (!response.ok) {\n      throw new Error('Registration failed');\n    }\n\n    return response.json();\n  },\n\n  async getCurrentUser() {\n    const token = localStorage.getItem('token');\n    if (!token) return null;\n\n    const response = await fetch(`${API_URL}/me`, {\n      headers: { 'Authorization': `Bearer ${token}` }\n    });\n\n    if (!response.ok) {\n      localStorage.removeItem('token');\n      return null;\n    }\n\n    return response.json();\n  }\n};"
-        },
-        {
-          "title": "Building Login Form",
-          "content": "Create a login form component that uses our authentication service:",
-          "code": "import React, { useState } from 'react';\nimport { authService } from '../services/authService';\nimport { useAuth } from '../context/AuthContext';\n\nfunction LoginForm() {\n  const [email, setEmail] = useState('');\n  const [password, setPassword] = useState('');\n  const [error, setError] = useState('');\n  const { login } = useAuth();\n\n  const handleSubmit = async (e) => {\n    e.preventDefault();\n    \n    try {\n      const data = await authService.login(email, password);\n      login(data.user);\n      // Redirect to dashboard\n    } catch (err) {\n      setError('Invalid email or password');\n    }\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      {error && <div className=\"error\">{error}</div>}\n      \n      <div className=\"form-group\">\n        <label>Email</label>\n        <input \n          type=\"email\"\n          value={email}\n          onChange={(e) => setEmail(e.target.value)}\n          required\n        />\n      </div>\n\n      <div className=\"form-group\">\n        <label>Password</label>\n        <input\n          type=\"password\"\n          value={password}\n          onChange={(e) => setPassword(e.target.value)}\n          required\n        />\n      </div>\n\n      <button type=\"submit\" className=\"btn\">Login</button>\n    </form>\n  );\n}"
-        },
-        {
-          "title": "Protecting Routes",
-          "content": "Create a higher-order component to protect routes that require authentication:",
-          "code": "import React from 'react';\nimport { Redirect, Route } from 'react-router-dom';\nimport { useAuth } from '../context/AuthContext';\n\nexport function PrivateRoute({ children, ...rest }) {\n  const { user, loading } = useAuth();\n\n  if (loading) {\n    return <div>Loading...</div>;\n  }\n\n  return (\n    <Route\n      {...rest}\n      render={({ location }) =>\n        user ? (\n          children\n        ) : (\n          <Redirect\n            to={{\n              pathname: '/login',\n              state: { from: location }\n            }}\n          />\n        )\n      }\n    />\n  );\n}\n\n// Usage:\n// <PrivateRoute path=\"/dashboard\">\n//   <Dashboard />\n// </PrivateRoute>"
-        },
-        {
-        "title": "Adding Authentication to API Calls",
-        "content": "Create an axios instance that automatically adds the authentication token to requests:",
-          "code": "import axios from 'axios';\nimport { useAuth } from './context/AuthContext';\n\nconst api = axios.create({\n  baseURL: 'https://api.yourapp.com',\n});\n\n// Request interceptor to add auth token\napi.interceptors.request.use(\n  (config) => {\n    const { user } = useAuth();\n    if (user && user.token) {\n      config.headers.Authorization = `Bearer ${user.token}`;\n    }\n    return config;\n  },\n  (error) => {\n    return Promise.reject(error);\n  }\n);\n\n// Response interceptor to handle token expiration\napi.interceptors.response.use(\n  (response) => response,\n  async (error) => {\n    const originalRequest = error.config;\n\n    if (error.response.status === 401 && !originalRequest._retry) {\n      originalRequest._retry = true;\n      \n      // Try to refresh token\n      try {\n        const { data } = await authService.refreshToken();\n        // Save new token\n        // Retry original request\n        return api(originalRequest);\n      } catch (err) {\n        // Logout user if refresh fails\n        const { logout } = useAuth();\n        logout();\n        return Promise.reject(err);\n      }\n    }\n\n    return Promise.reject(error);\n  }\n);\n\nexport default api;"
-        }
-      ]
-    }
-  ]
-}
+                    "articles": [
+                        {
+                            "id": 1,
+                            "title": "The Evolution of Generative AI: Beyond ChatGPT",
+                            "category": "Artificial Intelligence",
+                            "excerpt": "Exploring the next generation of AI models that are transforming creative industries and pushing the boundaries of what's possible.",
+                            "author": "Alex Johnson",
+                            "authorInitials": "AJ",
+                            "date": "June 15, 2023",
+                            "image": "/images/artificial-intelligence.jpg",
+                            "tags": ["AI ", "Machine Learning ", "Generative Models ", "ChatGPT"]
+                        },
+                        {
+                            "id": 2,
+                            "title": "Building Responsive UIs with CSS Container Queries",
+                            "category": "Web Development",
+                            "excerpt": "Container queries are revolutionizing responsive design. Learn how to implement this powerful new CSS feature.",
+                            "author": "Sarah Rodriguez",
+                            "authorInitials": "SR",
+                            "date": "June 10, 2025",
+                            "image": "/images/css.jpg",
+                            "tags": ["CSS ", "Responsive Design ", "Web Development ", "Frontend"]
+                        },
+                        {
+                            "id": 3,
+                            "title": "Zero Trust Architecture: The Future of Enterprise Security",
+                            "category": "Cybersecurity",
+                            "excerpt": "As traditional security models are falling short. Discover how Zero Trust is becoming the gold standard for protecting digital assets.",
+                            "author": "Michael Dunk",
+                            "authorInitials": "MD",
+                            "date": "Jan 5, 2025",
+                            "image": "/images/cyber-security.jpg",
+                            "tags": ["Security ", "Zero Trust ", "Enterprise ", "Network Security "]
+                        },
+                        {
+                            "id": 4,
+                            "title": "Beyond Cryptocurrency: Real-World Blockchain Applications",
+                            "category": "Blockchain",
+                            "excerpt": "Blockchain technology is finding applications far beyond digital currencies. Explore innovative use cases in various industries.",
+                            "author": "Jennifer Parker",
+                            "authorInitials": "JP",
+                            "date": "May 28, 2025",
+                            "image": "/images/bitcoin.jpg",
+                            "tags": ["Blockchain ", "Distributed Ledger ", "Supply Chain ", "Healthcare"]
+                        },
+                        {
+                            "id": 5,
+                            "title": "Serverless Architecture: Myths vs. Reality",
+                            "category": "Cloud Computing",
+                            "excerpt": "Serverless computing promises scalability and cost efficiency, but it's not a silver bullet. We separate fact from fiction in this expose..",
+                            "author": "David Reynolds",
+                            "authorInitials": "DR",
+                            "date": "May 20, 2025",
+                            "image": "/images/server.jpg",
+                            "tags": ["Cloud ", "Serverless ", "AWS ", "Azure"]
+                        },
+                        {
+                            "id": 6,
+                            "title": "Wearable Tech 2023: Beyond Fitness Trackers",
+                            "category": "Gadgets",
+                            "excerpt": "The next generation of wearables is blurring the line between fashion and functionality. Discover the most innovative devices there is.",
+                            "author": "Karen Lee",
+                            "authorInitials": "KL",
+                            "date": "May 12, 2025",
+                            "image": "/images/smartwatch-8300238_1280.jpg",
+                            "tags": ["Wearables ", "IoT ", "Smart Devices ", "Health Tech "]
+                        },
+                        {
+                            "id": 7,
+                            "title": "The Future of Quantum Computing: The Infographic",
+                            "category": "Emerging Tech",
+                            "excerpt": "Quantum computing has evolved into practical application. Explore the current state and future potential of this revolutionary technology.",
+                            "author": "Robert Chen",
+                            "authorInitials": "RC",
+                            "date": "May 4, 2025",
+                            "image": "/images/quantum-computing.jpg",
+                            "tags": ["Quantum ", "Emerging Tech ", "Computing ", "Future "]
+                        },
+                        {
+                            "id": 8,
+                            "title": "Mastering React Performance Optimization",
+                            "category": "Web Development",
+                            "excerpt": "Learn advanced techniques to optimize React applications for speed and efficiency, making productivity better.",
+                            "author": "Priya Sharma",
+                            "authorInitials": "PS",
+                            "date": "April 27, 2025",
+                            "image": "/images/react.jpg",
+                            "tags": ["React ", "JavaScript ", "Performance ", "Web Development"]
+                        }
+                    ]
+                }
