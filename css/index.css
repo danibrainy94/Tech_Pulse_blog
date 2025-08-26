@@ -717,7 +717,7 @@ footer {
 /* Scroll Progress */
 .scroll-progress {
   position: fixed;
-  top: 2px;
+  top: 0px;
   left: 0;
   height: 4px;
   background: var(--accent);
