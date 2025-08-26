@@ -721,7 +721,7 @@ footer {
   left: 0;
   height: 4px;
   background: var(--accent);
-  z-index: 100;
+  z-index: 1000;
   transition: width 0.3s ease;
 }
 
