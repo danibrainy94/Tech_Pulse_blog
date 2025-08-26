@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${article.title}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/article-info.css">
+</head>
+<body>
+    <!-- Place this in article-info.html -->
+<div id="articleInfoCard"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
+
+    if (!articleId) {
+        $('#articleInfoCard').html('<p>No article selected.</p>');
+        return;
+    }
+
+    $.getJSON('articles.json', function(data) {
+        const article = data.articles.find(a => a.id == articleId);
+        if (!article) {
+            $('#articleInfoCard').html('<p>Article not found.</p>');
+            return;
+        }
+
+        // Build tags HTML
+        let tagsHtml = '';
+        if (article.tags && article.tags.length) {
+            article.tags.forEach(tag => {
+                tagsHtml += `<span class="post-tag">${tag}</span>`;
+            });
+        }
+
+        // Build article card HTML
+        const articleHtml = `
+            <article class="post-card fade-in" data-id="${article.id}">
+                <div class="post-image">
+                    <img src="${article.image}" alt="${article.title}">
+                </div>
+                <div class="post-content">
+                    <h2 class="post-title">${article.title}</h2>
+                    <p class="post-content">${article.content}</p>
+                    <div class="post-tags">${tagsHtml}</div>
+                    <div class="post-meta">
+                        <div class="author">
+                            <div class="author-avatar">${article.authorInitials}</div>
+                            <span>${article.author}</span>
+                        </div>
+                        <span>${article.date}</span>
+                    </div>
+                </div>
+                <a href="./index.html" class="btn"><i class="fa-solid fa-backward"></i></a>
+            </article>
+        `;
+
+        $('#articleInfoCard').html(articleHtml);
+    });
+});
+</script>
+</body>
+</html>
