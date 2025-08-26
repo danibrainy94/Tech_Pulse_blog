@@ -146,7 +146,7 @@ $(document).ready(function() {
                             "id": 4,
                             "title": "Beyond Cryptocurrency: Real-World Blockchain Applications",
                             "category": "Blockchain",
-                            "excerpt": "Blockchain technology is finding applications far beyond digital currencies. Explore innovative use cases transforming various industries.",
+                            "excerpt": "Blockchain technology is finding applications far beyond digital currencies. Explore innovative use cases in various industries.",
                             "author": "Jennifer Parker",
                             "authorInitials": "JP",
                             "date": "May 28, 2025",
