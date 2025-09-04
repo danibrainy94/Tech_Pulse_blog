@@ -1,0 +1,3500 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse | Modern Tech Blog</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css   ">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js   "></script>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Back to Top Button -->
+    <div id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-handle"></div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="./index.html"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>The Future of Technology, Today</h1>
+                <p>TechPulse delivers cutting-edge insights, in-depth tutorials, and the latest news in the ever-evolving world of technology. Stay ahead of the curve with our expertly crafted content.</p>
+                <a href="#articles" class="btn">Explore Articles</a>
+            </div>
+            
+            <div class="hero-illustration">
+                <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#66999B" />
+                            <stop offset="100%" stop-color="#88bcbc" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <rect x="50" y="50" width="500" height="300" rx="20" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.2" />
+                    
+                    <circle cx="150" cy="150" r="40" fill="url(#grad1)" opacity="0.15" />
+                    <circle cx="450" cy="200" r="60" fill="url(#grad1)" opacity="0.1" />
+                    <circle cx="300" cy="280" r="30" fill="url(#grad1)" opacity="0.2" />
+                    
+                    <rect x="120" y="200" width="120" height="60" rx="10" fill="url(#grad1)" opacity="0.1" />
+                    <rect x="350" y="120" width="100" height="40" rx="5" fill="url(#grad1)" opacity="0.15" />
+                    
+                    <path d="M180 150 L280 100 L350 150 L300 220 L200 200 Z" fill="url(#grad1)" opacity="0.08" />
+                    
+                    <circle cx="300" cy="150" r="80" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.15" />
+                    
+                    <text x="300" y="160" text-anchor="middle" fill="url(#grad1)" font-family="Arial" font-size="24" font-weight="bold" opacity="0.8">Tech</text>
+                    <text x="300" y="190" text-anchor="middle" fill="url(#grad1)" font-family="Arial" font-size="24" font-weight="bold" opacity="0.8">Pulse</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <div class="container">
+        <div class="categories">
+            <div class="categories-header">
+                <h3 class="categories-title">Explore Topics</h3>
+                <a href="#" style="color: var(--accent); font-weight: 500;">View All</a>
+            </div>
+            
+            <div class="category-tags" id="categoryTags">
+                <a href="#" class="category-tag active" data-category="all">All</a>
+                <a href="#" class="category-tag" data-category="artificial-intelligence">Artificial Intelligence</a>
+                <a href="#" class="category-tag" data-category="web-development">Web Development</a>
+                <a href="#" class="category-tag" data-category="cybersecurity">Cybersecurity</a>
+                <a href="#" class="category-tag" data-category="blockchain">Blockchain</a>
+                <a href="#" class="category-tag" data-category="cloud-computing">Cloud Computing</a>
+                <a href="#" class="category-tag" data-category="gadgets">Gadgets</a>
+                <a href="#" class="category-tag" data-category="emerging-tech">Emerging Tech</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Posts -->
+    <section id="articles" class="container" style="margin: 4rem 0 6rem;">
+        <div class="section-header fade-in">
+            <h2>Latest Articles</h2>
+            <p>Stay updated with the latest in technology, programming, and innovation</p>
+        </div>
+        
+        <div class="posts-grid" id="postsGrid">
+            <!-- Articles will be populated dynamically from JSON -->
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <div class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest tech insights, tutorials, and exclusive content delivered straight to your inbox.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <a href="#" class="logo" style="font-size: 2rem; margin-bottom: 1rem; display: block;">
+                        <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+                    </a>
+                    <p>TechPulse is your go-to destination for cutting-edge technology news, in-depth tutorials, and expert analysis. We're dedicated to making complex tech topics accessible to everyone.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#articles"><i class="fas fa-chevron-right"></i> Articles</a></li>
+                        <li><a href="tutorials.html"><i class="fas fa-chevron-right"></i> Tutorials</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> News</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Artificial Intelligence</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cybersecurity</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Gadgets</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blockchain</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cloud Computing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Getting Started</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Coding Challenges</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tech Glossary</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Career Guides</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tool Recommendations</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TechPulse. All rights reserved. Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> and smooth animations</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | TechPulse</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css   ">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js   "></script>
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <div class="toggle-handle"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to access your personalized tech experience</p>
+            </div>
+            <div class="login-body">
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    
+                    <div class="login-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn">Sign In</button>
+                    
+                    <div class="social-login">
+                        <p>Or continue with</p>
+                        <div class="social-buttons">
+                            <a href="#" class="social-btn"><i class="fab fa-google"></i> Google</a>
+                            <a href="#" class="social-btn"><i class="fab fa-apple"></i> Apple</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="login-footer">
+                Don't have an account? <a href="register.html">Create one</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 TechPulse. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/login.js"></script>
+</body>
+</html>        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials | TechPulse</title>
+    <link rel="stylesheet" href="./css/tutorials.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css   ">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js   "></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Back to Top Button -->
+    <div id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#articles">Articles</a></li>
+                    <li><a href="tutorials.html" class="active">Tutorials</a></li>
+                    <li><a href="index.html">Reviews</a></li>
+                    <li><a href="index.html">News</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-handle"></div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="login.html"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content fade-in">
+            <h1>Step-by-Step Tutorials</h1>
+            <p>Practical, hands-on guides to help you master the latest technologies and techniques</p>
+        </div>
+    </section>
+
+    <!-- Tutorial Detail -->
+    <div class="container tutorial-detail">
+        <div class="tutorial-header fade-in">
+            <h1 id="tutorialTitle">Building Your First React Component</h1>
+            <div class="tutorial-meta-row">
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Web Development</span>
+                </div>
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-signal"></i>
+                    <span>Beginner Level</span>
+                </div>
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>30 min read</span>
+                </div>
+            </div>
+            <p id="tutorialExcerpt" class="tutorial-excerpt">Learn the fundamentals of React components, props, and state in this hands-on tutorial.</p>
+        </div>
+        
+        <div class="tutorial-content-area fade-in">
+            <div id="tutorialSteps">
+                <!-- Tutorial steps will be populated dynamically -->
+            </div>
+            
+            <div class="tutorial-navigation">
+                <a href="#" class="nav-button">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="#" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/tutorials.js"></script>
+</body>
+</html>               <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${article.title}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css   ">
+    <link rel="stylesheet" href="./css/index.css">
+    
+</head>
+<body>
+        <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Back to Top Button -->
+    <div id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-handle"></div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="./index.html"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Place this in article-info.html -->
+<div id="articleInfoCard"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js   "></script>
+<script>
+    // open up the articles page at the click of the title
+
+$(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
+
+    if (!articleId) {
+        $('#articleInfoCard').html('<p>No article selected.</p>');
+        return;
+    }
+
+    $.getJSON('articles.json', function(data) {
+        const article = data.articles.find(a => a.id == articleId);
+        if (!article) {
+            $('#articleInfoCard').html('<p>Article not found.</p>');
+            return;
+        }
+
+        // Build tags HTML
+        let tagsHtml = '';
+        if (article.tags && article.tags.length) {
+            article.tags.forEach(tag => {
+                tagsHtml += `<span class="post-tag">${tag}</span>`;
+            });
+        }
+
+        // Build article card HTML
+        const articleHtml = `
+            <article class="post-card2 fade-in" data-id="${article.id}">
+                <h2 class="post-title2">${article.title}</h2>
+                <div class="post-meta2">
+                    <div class="author2">
+                        <div class="author-avatar2">${article.authorInitials}</div>
+                        <span>${article.author}</span>
+                    </div>
+                    <span>${article.date}</span>
+                </div>
+                <div class="post-image2">
+                    <img src="${article.image}" alt="${article.title}">
+                </div>
+                <div class="post-content-cont2">
+                    <p class="post-content2">${article.content}</p>
+                    <div class="post-tags2">${tagsHtml}</div>
+                </div>
+                <a href="./index.html" class="btn2"><i class="fa-solid fa-arrow-left"></i></a>
+            </article>
+        `;
+
+        $('#articleInfoCard').html(articleHtml);
+    });
+});
+
+</script>
+<script src="./js/index.js"></script>
+</body>
+</html>             <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse | Modern Tech Blog</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css   ">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js   "></script>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Back to Top Button -->
+    <div id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-handle"></div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="./index.html"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>The Future of Technology, Today</h1>
+                <p>TechPulse delivers cutting-edge insights, in-depth tutorials, and the latest news in the ever-evolving world of technology. Stay ahead of the curve with our expertly crafted content.</p>
+                <a href="#articles" class="btn">Explore Articles</a>
+            </div>
+            
+            <div class="hero-illustration">
+                <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#66999B" />
+                            <stop offset="100%" stop-color="#88bcbc" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <rect x="50" y="50" width="500" height="300" rx="20" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.2" />
+                    
+                    <circle cx="150" cy="150" r="40" fill="url(#grad1)" opacity="0.15" />
+                    <circle cx="450" cy="200" r="60" fill="url(#grad1)" opacity="0.1" />
+                    <circle cx="300" cy="280" r="30" fill="url(#grad1)" opacity="0.2" />
+                    
+                    <rect x="120" y="200" width="120" height="60" rx="10" fill="url(#grad1)" opacity="0.1" />
+                    <rect x="350" y="120" width="100" height="40" rx="5" fill="url(#grad1)" opacity="0.15" />
+                    
+                    <path d="M180 150 L280 100 L350 150 L300 220 L200 200 Z" fill="url(#grad1)" opacity="0.08" />
+                    
+                    <circle cx="300" cy="150" r="80" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.15" />
+                    
+                    <text x="300" y="160" text-anchor="middle" fill="url(#grad1)" font-family="Arial" font-size="24" font-weight="bold" opacity="0.8">Tech</text>
+                    <text x="300" y="190" text-anchor="middle" fill="url(#grad1)" font-family="Arial" font-size="24" font-weight="bold" opacity="0.8">Pulse</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <div class="container">
+        <div class="categories">
+            <div class="categories-header">
+                <h3 class="categories-title">Explore Topics</h3>
+                <a href="#" style="color: var(--accent); font-weight: 500;">View All</a>
+            </div>
+            
+            <div class="category-tags" id="categoryTags">
+                <a href="#" class="category-tag active" data-category="all">All</a>
+                <a href="#" class="category-tag" data-category="artificial-intelligence">Artificial Intelligence</a>
+                <a href="#" class="category-tag" data-category="web-development">Web Development</a>
+                <a href="#" class="category-tag" data-category="cybersecurity">Cybersecurity</a>
+                <a href="#" class="category-tag" data-category="blockchain">Blockchain</a>
+                <a href="#" class="category-tag" data-category="cloud-computing">Cloud Computing</a>
+                <a href="#" class="category-tag" data-category="gadgets">Gadgets</a>
+                <a href="#" class="category-tag" data-category="emerging-tech">Emerging Tech</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Posts -->
+    <section id="articles" class="container" style="margin: 4rem 0 6rem;">
+        <div class="section-header fade-in">
+            <h2>Latest Articles</h2>
+            <p>Stay updated with the latest in technology, programming, and innovation</p>
+        </div>
+        
+        <div class="posts-grid" id="postsGrid">
+            <!-- Articles will be populated dynamically from JSON -->
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <div class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest tech insights, tutorials, and exclusive content delivered straight to your inbox.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <a href="#" class="logo" style="font-size: 2rem; margin-bottom: 1rem; display: block;">
+                        <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+                    </a>
+                    <p>TechPulse is your go-to destination for cutting-edge technology news, in-depth tutorials, and expert analysis. We're dedicated to making complex tech topics accessible to everyone.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#articles"><i class="fas fa-chevron-right"></i> Articles</a></li>
+                        <li><a href="tutorials.html"><i class="fas fa-chevron-right"></i> Tutorials</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> News</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Artificial Intelligence</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cybersecurity</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Gadgets</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blockchain</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cloud Computing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Getting Started</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Coding Challenges</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tech Glossary</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Career Guides</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tool Recommendations</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TechPulse. All rights reserved. Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> and smooth animations</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | TechPulse</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css   ">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js   "></script>
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <div class="toggle-handle"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to access your personalized tech experience</p>
+            </div>
+            <div class="login-body">
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    
+                    <div class="login-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn">Sign In</button>
+                    
+                    <div class="social-login">
+                        <p>Or continue with</p>
+                        <div class="social-buttons">
+                            <a href="#" class="social-btn"><i class="fab fa-google"></i> Google</a>
+                            <a href="#" class="social-btn"><i class="fab fa-apple"></i> Apple</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="login-footer">
+                Don't have an account? <a href="register.html">Create one</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 TechPulse. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/login.js"></script>
+</body>
+</html>        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials | TechPulse</title>
+    <link rel="stylesheet" href="./css/tutorials.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css   ">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js   "></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Back to Top Button -->
+    <div id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#articles">Articles</a></li>
+                    <li><a href="tutorials.html" class="active">Tutorials</a></li>
+                    <li><a href="index.html">Reviews</a></li>
+                    <li><a href="index.html">News</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-handle"></div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="login.html"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content fade-in">
+            <h1>Step-by-Step Tutorials</h1>
+            <p>Practical, hands-on guides to help you master the latest technologies and techniques</p>
+        </div>
+    </section>
+
+    <!-- Tutorial Detail -->
+    <div class="container tutorial-detail">
+        <div class="tutorial-header fade-in">
+            <h1 id="tutorialTitle">Building Your First React Component</h1>
+            <div class="tutorial-meta-row">
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Web Development</span>
+                </div>
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-signal"></i>
+                    <span>Beginner Level</span>
+                </div>
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>30 min read</span>
+                </div>
+            </div>
+            <p id="tutorialExcerpt" class="tutorial-excerpt">Learn the fundamentals of React components, props, and state in this hands-on tutorial.</p>
+        </div>
+        
+        <div class="tutorial-content-area fade-in">
+            <div id="tutorialSteps">
+                <!-- Tutorial steps will be populated dynamically -->
+            </div>
+            
+            <div class="tutorial-navigation">
+                <a href="#" class="nav-button">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="#" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/tutorials.js"></script>
+</body>
+</html>               <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${article.title}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css   ">
+    <link rel="stylesheet" href="./css/index.css">
+    
+</head>
+<body>
+        <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Back to Top Button -->
+    <div id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-handle"></div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="./index.html"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Place this in article-info.html -->
+<div id="articleInfoCard"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js   "></script>
+<script>
+    // open up the articles page at the click of the title
+
+$(document).ready(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
+
+    if (!articleId) {
+        $('#articleInfoCard').html('<p>No article selected.</p>');
+        return;
+    }
+
+    $.getJSON('articles.json', function(data) {
+        const article = data.articles.find(a => a.id == articleId);
+        if (!article) {
+            $('#articleInfoCard').html('<p>Article not found.</p>');
+            return;
+        }
+
+        // Build tags HTML
+        let tagsHtml = '';
+        if (article.tags && article.tags.length) {
+            article.tags.forEach(tag => {
+                tagsHtml += `<span class="post-tag">${tag}</span>`;
+            });
+        }
+
+        // Build article card HTML
+        const articleHtml = `
+            <article class="post-card2 fade-in" data-id="${article.id}">
+                <h2 class="post-title2">${article.title}</h2>
+                <div class="post-meta2">
+                    <div class="author2">
+                        <div class="author-avatar2">${article.authorInitials}</div>
+                        <span>${article.author}</span>
+                    </div>
+                    <span>${article.date}</span>
+                </div>
+                <div class="post-image2">
+                    <img src="${article.image}" alt="${article.title}">
+                </div>
+                <div class="post-content-cont2">
+                    <p class="post-content2">${article.content}</p>
+                    <div class="post-tags2">${tagsHtml}</div>
+                </div>
+                <a href="./index.html" class="btn2"><i class="fa-solid fa-arrow-left"></i></a>
+            </article>
+        `;
+
+        $('#articleInfoCard').html(articleHtml);
+    });
+});
+
+</script>
+<script src="./js/index.js"></script>
+</body>
+</html>                    {
+                    "articles": [
+                        {
+                            "id": 1,
+                            "title": "The Evolution of Generative AI: Beyond ChatGPT",
+                            "category": "Artificial Intelligence",
+                            "excerpt": "Exploring the next generation of AI models that are transforming creative industries and pushing the boundaries of what's possible.",
+                            "author": "Alex Johnson",
+                            "authorInitials": "AJ",
+                            "date": "June 15, 2023",
+                            "image": "/images/artificial-intelligence.jpg",
+                            "tags": ["AI ", "Machine Learning ", "Generative Models ", "ChatGPT"],
+                            "content": "The landscape of artificial intelligence has undergone a seismic shift with the emergence of advanced generative models. While ChatGPT captured the public's imagination, the technology has evolved far beyond simple text generation. Today's AI systems can create complex multimedia content, assist in scientific discovery, and even generate code with remarkable accuracy.\n\nThis article explores the latest developments in generative AI, including multimodal models that can process and generate both text and images, video generation systems that create realistic footage from text prompts, and specialized AI tools designed for specific industries like healthcare and engineering.\n\nWe'll examine the technical foundations of these systems, their practical applications, and the ethical considerations that come with increasingly powerful AI capabilities. Whether you're a developer looking to integrate these technologies or simply curious about where AI is heading, this comprehensive guide will provide valuable insights into the future of generative intelligence."
+                            
+                        },
+                        {
+                            "id": 2,
+                            "title": "Building Responsive UIs with CSS Container Queries",
+                            "category": "Web Development",
+                            "excerpt": "Container queries are revolutionizing responsive design. Learn how to implement this powerful new CSS feature.",
+                            "author": "Sarah Rodriguez",
+                            "authorInitials": "SR",
+                            "date": "June 10, 2025",
+                            "image": "/images/css.jpg",
+                            "tags": ["CSS ", "Responsive Design ", "Web Development ", "Frontend"],
+                            "content": "CSS Container Queries represent a paradigm shift in responsive web design, moving beyond viewport-based media queries to element-based responsiveness. This powerful feature allows components to adapt based on their container's size rather than the entire viewport, enabling truly modular and reusable UI components.\n\nIn this tutorial, we'll dive deep into container queries, covering:\n\n- The fundamental concepts and how they differ from traditional media queries\n- Setting up container query contexts with the @container rule\n- Practical implementation examples for common UI patterns\n- Browser support and fallback strategies\n- Performance considerations and best practices\n\nWe'll build several real-world examples including a card grid that adapts based on available space, a navigation menu that transforms based on its container width, and a data visualization component that adjusts its layout for different contexts.\n\nBy the end of this tutorial, you'll have the knowledge to implement container queries in your projects and create more flexible, context-aware interfaces that provide optimal user experiences across all device sizes."
+                        },
+                        {
+                            "id": 3,
+                            "title": "Zero Trust Architecture: The Future of Enterprise Security",
+                            "category": "Cybersecurity",
+                            "excerpt": "As traditional security models are falling short. Discover how Zero Trust is becoming the gold standard for protecting digital assets.",
+                            "author": "Michael Dunk",
+                            "authorInitials": "MD",
+                            "date": "Jan 5, 2025",
+                            "image": "/images/cyber-security.jpg",
+                            "tags": ["Security ", "Zero Trust ", "Enterprise ", "Network Security "],
+                            "content": "The traditional security model of 'trust but verify' has become increasingly inadequate in today's threat landscape. With sophisticated attacks, remote work, and cloud adoption, organizations need a more robust security framework. Enter Zero Trust Architecture (ZTA) - a security model based on the principle of 'never trust, always verify.'\n\nThis comprehensive guide explores Zero Trust Architecture in depth:\n\n- The core principles of Zero Trust and how they differ from perimeter-based security\n- Key components: identity verification, device security, network segmentation, and least privilege access\n- Implementation roadmap for organizations of different sizes\n- Real-world case studies showing security improvements\n- Common challenges and how to overcome them\n- Integration with existing security tools and systems\n\nWe'll examine how leading companies have successfully implemented Zero Trust to reduce their attack surface, improve threat detection, and respond more effectively to security incidents. Whether you're a security professional or business leader, this article provides actionable insights for securing your organization in an increasingly complex digital world."
+                        },
+                        {
+                            "id": 4,
+                            "title": "Beyond Cryptocurrency: Real-World Blockchain Applications",
+                            "category": "Blockchain",
+                            "excerpt": "Blockchain technology is finding applications far beyond digital currencies. Explore innovative use cases in various industries.",
+                            "author": "Jennifer Parker",
+                            "authorInitials": "JP",
+                            "date": "May 28, 2025",
+                            "image": "/images/bitcoin.jpg",
+                            "tags": ["Blockchain ", "Distributed Ledger ", "Supply Chain ", "Healthcare"],
+                            "content": "While blockchain technology gained fame through cryptocurrencies like Bitcoin, its potential extends far beyond digital money. This distributed ledger technology is now revolutionizing industries with applications that increase transparency, reduce fraud, and streamline complex processes.\n\nIn this article, we explore groundbreaking blockchain implementations across multiple sectors:\n\n- Supply chain management: Tracking products from origin to consumer with immutable records\n- Healthcare: Securing patient records while enabling controlled data sharing\n- Voting systems: Creating transparent, tamper-proof election processes\n- Intellectual property: Verifying ownership and managing digital rights\n- Real estate: Streamlining property transactions and reducing fraud\n\nWe'll examine specific case studies including Walmart's food traceability system, Estonia's national healthcare blockchain, and De Beers' diamond tracking platform. The article also covers the technical considerations for implementing blockchain solutions, including choosing between public and private blockchains, understanding consensus mechanisms, and evaluating when blockchain is truly the right solution for a given problem."
+                        },
+                        {
+                            "id": 5,
+                            "title": "Serverless Architecture: Myths vs. Reality",
+                            "category": "Cloud Computing",
+                            "excerpt": "Serverless computing promises scalability and cost efficiency, but it's not a silver bullet. We separate fact from fiction in this expose..",
+                            "author": "David Reynolds",
+                            "authorInitials": "DR",
+                            "date": "May 20, 2025",
+                            "image": "/images/server.jpg",
+                            "tags": ["Cloud ", "Serverless ", "AWS ", "Azure"],
+                            "content": "Serverless computing has generated significant buzz in the development community, promising reduced operational overhead, automatic scaling, and pay-per-use pricing. But as adoption grows, so do misconceptions about what serverless truly offers.\n\nThis article cuts through the hype to provide a realistic assessment of serverless architecture:\n\n- Common myths: 'No servers involved,' 'Always cheaper,' 'No scaling concerns'\n- Performance characteristics: cold starts, execution limits, and latency considerations\n- When serverless makes sense (and when it doesn't)\n- Cost analysis comparing serverless to traditional hosting\n- Security implications of the serverless model\n- Vendor lock-in concerns and strategies for mitigation\n\nWe'll walk through a detailed case study comparing a traditional application deployed on virtual machines versus its serverless equivalent, analyzing both technical and business implications. The article also includes practical implementation tips for AWS Lambda, Azure Functions, and Google Cloud Functions, helping you make informed decisions about whether serverless is right for your next project."
+                        },
+                        {
+                            "id": 6,
+                            "title": "Wearable Tech 2023: Beyond Fitness Trackers",
+                            "category": "Gadgets",
+                            "excerpt": "The next generation of wearables is blurring the line between fashion and functionality. Discover the most innovative devices there is.",
+                            "author": "Karen Lee",
+                            "authorInitials": "KL",
+                            "date": "May 12, 2025",
+                            "image": "/images/smartwatch-8300238_1280.jpg",
+                            "tags": ["Wearables ", "IoT ", "Smart Devices ", "Health Tech "],
+                            "content": "Wearable technology has evolved far beyond basic fitness tracking. Today's wearables represent a sophisticated fusion of fashion, health monitoring, and seamless connectivity that's transforming how we interact with technology throughout our day.\n\nThis comprehensive review covers the most innovative wearable technologies of 2023:\n\n- Advanced health monitoring: Continuous glucose monitors, ECG sensors, and stress detection\n- Smart clothing: Fabrics with integrated sensors for athletic performance and medical applications\n- AR glasses: The next frontier in hands-free computing and information access\n- Payment and access integration: Wearables as digital wallets and access control devices\n- Sustainability innovations: Eco-friendly materials and longer product lifecycles\n\nWe'll examine how these devices are moving from niche products to mainstream adoption, with special attention to privacy concerns, battery life improvements, and the integration of AI for personalized insights. The article also includes hands-on reviews of the latest devices from major manufacturers and emerging startups, helping you understand which technologies are truly valuable versus those that are merely gimmicky."
+                        },
+                        {
+                            "id": 7,
+                            "title": "The Future of Quantum Computing: The Infographic",
+                            "category": "Emerging Tech",
+                            "excerpt": "Quantum computing has evolved into practical application. Explore the current state and future potential of this revolutionary technology.",
+                            "author": "Robert Chen",
+                            "authorInitials": "RC",
+                            "date": "May 4, 2025",
+                            "image": "/images/quantum-computing.jpg",
+                            "tags": ["Quantum ", "Emerging Tech ", "Computing ", "Future "],
+                            "content": "Quantum computing has transitioned from theoretical physics to practical technology with accelerating speed. What was once confined to research labs is now becoming accessible through cloud platforms, opening new possibilities for solving problems that are intractable for classical computers.\n\nThis in-depth exploration covers:\n\n- Quantum fundamentals: Qubits, superposition, and entanglement explained simply\n- Current hardware approaches: Superconducting, trapped ion, and photonic systems\n- Near-term applications: Quantum chemistry, optimization problems, and machine learning\n- Major players: IBM, Google, Microsoft, and startups pushing the boundaries\n- Programming quantum computers: Qiskit, Cirq, and other development frameworks\n- The road ahead: Error correction, scaling challenges, and timeline predictions\n\nWe'll examine real-world examples where quantum computing is already showing promise, including drug discovery, financial modeling, and materials science. The article also addresses common misconceptions about quantum computing and provides practical guidance for developers and businesses looking to prepare for the quantum era, whether through education, strategic partnerships, or early experimentation with available quantum cloud services."
+                        },
+                        {
+                            "id": 8,
+                            "title": "Mastering React Performance Optimization",
+                            "category": "Web Development",
+                            "excerpt": "Learn advanced techniques to optimize React applications for speed and efficiency, making productivity better.",
+                            "author": "Priya Sharma",
+                            "authorInitials": "PS",
+                            "date": "April 27, 2025",
+                            "image": "/images/react.jpg",
+                            "tags": ["React ", "JavaScript ", "Performance ", "Web Development"],
+                            "content": "React's virtual DOM provides excellent performance out of the box, but as applications grow in complexity, performance bottlenecks inevitably emerge. This comprehensive guide covers advanced techniques for optimizing React applications at scale.\n\nWe'll explore:\n\n- Profiling tools: React DevTools, Chrome Performance tab, and custom measurement techniques\n- Component optimization: React.memo, useMemo, and useCallback patterns\n- Render optimization strategies for complex lists and grids\n- Code splitting techniques with React.lazy and Suspense\n- State management optimizations for global state\n- Server-side rendering and static site generation benefits\n- Performance budgets and continuous monitoring\n\nThe article includes detailed code examples demonstrating each optimization technique, along with measurable performance improvements. We'll also examine common anti-patterns that degrade performance and how to avoid them. Whether you're building a small application or a large enterprise platform, these strategies will help ensure your React app delivers a smooth, responsive user experience even as it grows in complexity."
+                        }
+                    ]
+                }              :root {
+  --light-bg: #ebebeb;
+  --dark-bg: #12100e;
+  --accent: #66999b;
+  --text-light: #ffffff;
+  --text-dark: #12100e;
+  --card-bg: #ffffff;
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --shadow: 0 10px 30px rgba(18, 16, 14, 0.1);
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --border-radius: 16px;
+}
+
+.dark-mode {
+  --light-bg: #12100e;
+  --dark-bg: #ebebeb;
+  --card-bg: #1a1816;
+  --text-light: #12100e;
+  --text-dark: #ebebeb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  /* border: 2px solid black; */
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  display: none;
+  visibility: hidden;
+}
+
+/* ::-webkit-scrollbar-track {
+  background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 5px;
+} */
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3.2rem;
+  background: linear-gradient(90deg, var(--accent), #88bcbc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h2 {
+  font-size: 2.4rem;
+  color: var(--text-dark);
+}
+
+p {
+  margin-bottom: 1.2rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: #4a7777;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+header {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  overflow: hidden;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.logo i {
+  color: var(--accent);
+  margin-right: 0.5rem;
+  font-size: 2rem;
+}
+
+.logo span {
+  background: linear-gradient(90deg, var(--accent), #88bcbc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--text-dark);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: var(--transition);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme-toggle {
+  background: var(--light-bg);
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.toggle-handle {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode .toggle-handle {
+  transform: translateX(24px);
+}
+
+.user-actions a {
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.user-actions a:hover {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: 4rem 0;
+}
+
+.hero-content {
+  max-width: 650px;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 8px 20px rgba(102, 153, 155, 0.3);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #4a7777;
+  transition: width 0.4s ease;
+  z-index: -1;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(102, 153, 155, 0.4);
+  color: white;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.hero-illustration {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50%;
+  max-width: 600px;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.hero-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  background: var(--accent);
+  opacity: 0.05;
+  border-radius: 50%;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  right: 10%;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  bottom: 10%;
+  left: 5%;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  top: 30%;
+  right: 25%;
+}
+
+/* Blog Posts */
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-header h2 {
+  font-size: 2.8rem;
+  position: relative;
+  display: inline-block;
+  /* translate: 50%; */
+}
+
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  opacity: 0.8;
+  margin-top: 1.5rem;
+  text-align: center;
+
+}
+
+ /* text-align: center;
+  translate: 50%; */
+
+.posts-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(20em, .85fr)); */
+  grid-template-columns: repeat(3, 25em);
+  /* justify-items: center; */
+  justify-content: center; /* This centers the grid itself */
+  gap: 2rem; 
+  max-width: 1400px;
+  width: 95vw;
+  overflow: hidden;
+  /* margin: 0 -10px; */
+  padding: 0 20px;
+}
+
+.post-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  /* transform: translateY(0); */
+  
+}
+
+.dark-mode .post-card {
+  box-shadow: var(--shadow-dark);
+}
+
+.post-card:hover {
+  /* transform: translateY(-10px); */
+  box-shadow: 0 20px 40px rgba(18, 16, 14, 0.15);
+}
+
+.dark-mode .post-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.post-image {
+  height: 220px;
+  object-fit: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+.post-image img {
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.post-card:hover .post-image img {
+  transform: scale(1.05);
+}
+
+.post-content {
+  padding: 1.8rem;
+}
+
+.post-category {
+  display: inline-block;
+  padding: 5px 15px;
+  background: rgba(102, 153, 155, 0.1);
+  color: var(--accent);
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  display: block;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.post-card:hover .post-title {
+  color: var(--accent);
+}
+
+.post-excerpt {
+  color: var(--text-dark);
+  opacity: 0.8;
+  font-size: 0.95rem;
+  height: 6em;
+  /* margin-bottom: rem; */
+}
+
+.post-tags {
+  background: rgba(102, 153, 155, 0.1);
+  color: var(--accent);
+  display: none;
+  visibility: hidden;
+}
+
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-dark);
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+}
+
+.author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Categories */
+.categories {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.dark-mode .categories {
+  box-shadow: var(--shadow-dark);
+}
+
+.categories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.categories-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.category-tag {
+  padding: 6px 16px;
+  background: rgba(102, 153, 155, 0.1);
+  color: var(--accent);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.category-tag:hover,
+.category-tag.active {
+  background: var(--accent);
+  color: white;
+}
+
+/* Newsletter */
+.newsletter {
+  background: linear-gradient(135deg, var(--accent), #4a7777);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  text-align: center;
+  color: white;
+  margin: 4rem 0;
+}
+
+.newsletter h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.newsletter p {
+  max-width: 600px;
+  margin: 0 auto 1.8rem;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+.newsletter-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 50px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1rem;
+}
+
+.newsletter-form button {
+  background: var(--dark-bg);
+  color: white;
+  border: none;
+  padding: 0 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+  background: #0a0907;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  background: var(--card-bg);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(102, 153, 155, 0.1);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-col h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.footer-col h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: var(--text-dark);
+  opacity: 0.8;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.footer-about p {
+  color: var(--text-dark);
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(102, 153, 155, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(102, 153, 155, 0.1);
+  color: var(--text-dark);
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(102, 153, 155, 0.3);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 5;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Scroll Progress */
+.scroll-progress {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  height: 4px;
+  background: var(--accent);
+  z-index: 1000;
+  transition: width 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-in.appear {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .hero-illustration {
+    display: none;
+  }
+
+.posts-grid {
+  grid-template-columns: repeat(2, 22em);
+}
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 4rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .posts-grid {
+    margin: 0 -10px;
+    grid-template-columns: repeat(2, 22em);
+
+  }
+
+
+  nav ul {
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form button {
+    padding: 14px;
+  }
+  
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .posts-grid {
+    grid-template-columns: repeat(1, 21rem);
+    margin: 0 -10px;
+  }
+
+
+  .post-content-cont2 {
+  padding: .5rem;
+}
+
+  h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  #backToTop {
+    bottom: 10px;
+  }
+
+}
+
+
+
+/* for articles page */
+/* .posts-grid2 {
+  margin: 0 auto;
+} */
+
+.post-card2 {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  padding: 2rem;
+}
+
+.dark-mode .post-card2 {
+  box-shadow: var(--shadow-dark);
+}
+
+.post-image2 {
+  max-width: 100%;
+  position: relative;
+}
+
+.post-image2 img {
+  width: 100%;
+  max-width: 100%;
+  height: 30em;
+  object-fit: cover;
+  transition: var(--transition);
+  border-radius: 24px;
+  display: block;
+  margin: 0 auto;
+}
+
+.post-content2 {
+  padding: 1em .5rem;
+  font-size: 1.1rem;
+}
+
+.post-title2 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+  display: block;
+  color: var(--accent);
+  transition: var(--transition);
+}
+
+.post-tags2 {
+  background: rgba(102, 153, 155, 0.1);
+  color: var(--accent);
+  display: none;
+  visibility: hidden;
+}
+
+.post-meta2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2em;
+  padding: .5rem;
+  color: var(--text-dark);
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .post-card2 {
+    padding: 1.2rem;
+  }
+  .post-title2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .post-card2 {
+    padding: 1rem;
+  }
+  .post-title2 {
+    font-size: 1.2rem;
+  }
+  .post-content2 {
+    font-size: 1rem;
+  }
+  .post-meta2 {
+    gap: 1em;
+    font-size: 0.9rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: .3rem;
+  }
+  .post-image2 img {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .post-card2 {
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+  .post-title2 {
+    font-size: 1.2rem;
+    margin-bottom: .3rem;
+  }
+  .post-content2 {
+    font-size: 0.95rem;
+  }
+  .post-meta2 {
+    gap: 0.5em;
+    font-size: 0.85rem;
+    padding: .2rem;
+  }
+  .post-image2 img {
+    border-radius: 8px;
+    height: auto;
+  }
+}
+
+.author2 {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.author-avatar2 {
+  width: 2em;
+  height: 2em;
+  padding: 8px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.btn2 {
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  height: 2em;
+  width: 6em;
+  padding: 16px 24px;
+  background-color: #66999b80;
+  color: white;
+  border-radius: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 8px 20px rgba(102, 153, 155, 0.3);
+}
+
+.fa-arrow-left2 {
+    text-align: center;
+    font-size: 1.6em;
+}
+
+.btn2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #4a7777;
+  transition: width 0.4s ease;
+  z-index: -1;
+}
+
+.btn2:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(102, 153, 155, 0.4);
+  color: white;
+}
+
+.btn2:hover::before {
+  width: 100%;
+}                 :root {
+            --light-bg: #EBEBEB;
+            --dark-bg: #12100E;
+            --accent: #66999B;
+            --text-light: #FFFFFF;
+            --text-dark: #12100E;
+            --card-bg: #FFFFFF;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 10px 30px rgba(18, 16, 14, 0.1);
+            --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --border-radius: 16px;
+        }
+
+        .dark-mode {
+            --light-bg: #12100E;
+            --dark-bg: #EBEBEB;
+            --card-bg: #1A1816;
+            --text-light: #12100E;
+            --text-dark: #EBEBEB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: var(--transition);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            /* line-height: 1.6; */
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            
+            background: linear-gradient(135deg, rgba(235, 235, 235, 0.5), rgba(18, 16, 14, 0.05)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(102, 153, 155, 0.05)" stroke-width="1"/></svg>');
+        }
+
+        .dark-mode .login-container {
+            background: linear-gradient(135deg, rgba(18, 16, 14, 0.7), rgba(235, 235, 235, 0.05)), 
+                        url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(102, 153, 155, 0.1)" stroke-width="1"/></svg>');
+        }
+
+        .login-box {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 30em;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+
+        .dark-mode .login-box {
+            box-shadow: var(--shadow-dark);
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, var(--accent), #4a7777);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .login-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-body {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            /* margin-bottom: 1.8rem; */
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .dark-mode .form-group input {
+            background: #252321;
+            border-color: #333;
+            color: var(--text-light);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(102, 153, 155, 0.2);
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+            accent-color: var(--accent);
+        }
+
+        .forgot-password {
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(102, 153, 155, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: #4a7777;
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(102, 153, 155, 0.4);
+            color: white;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .login-footer {
+            text-align: center;
+            padding: 1.5rem 2.5rem;
+            border-top: 1px solid rgba(102, 153, 155, 0.1);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        .login-footer a {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--dark-bg);
+            width: 50px;
+            height: 26px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            z-index: 10;
+        }
+
+        .toggle-handle {
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            left: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .dark-mode .toggle-handle {
+            transform: translateX(24px);
+        }
+
+        .social-login {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .social-login p {
+            margin-bottom: .8rem;
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .social-login p::before,
+        .social-login p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: rgba(102, 153, 155, 0.3);
+        }
+
+        .social-login p::before {
+            left: 0;
+        }
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .dark-mode .social-btn {
+            border-color: #333;
+            background: #252321;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        .error-message {
+            background: #ffeded;
+            border: 1px solid #ff8a8a;
+            color: #d32f2f;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .success-message {
+            background: #e8f5e9;
+            border: 1px solid #81c784;
+            color: #388e3c;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        @media (max-width: 576px) {
+            .login-body,
+            .login-footer {
+                padding: 1.8rem;
+            }
+        }               :root {
+  --light-bg: #ebebeb;
+  --dark-bg: #12100e;
+  --accent: #66999b;
+  --text-light: #ffffff;
+  --text-dark: #12100e;
+  --card-bg: #ffffff;
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --shadow: 0 10px 30px rgba(18, 16, 14, 0.1);
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.3);
+  --border-radius: 16px;
+}
+
+.dark-mode {
+  --light-bg: #12100e;
+  --dark-bg: #ebebeb;
+  --card-bg: #1a1816;
+  --text-light: #12100e;
+  --text-dark: #ebebeb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 5px;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1.2rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: #4a7777;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+header {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  overflow: hidden;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.logo i {
+  color: var(--accent);
+  margin-right: 0.5rem;
+  font-size: 2rem;
+}
+
+.logo span {
+  background: linear-gradient(90deg, var(--accent), #88bcbc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--text-dark);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: var(--transition);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.theme-toggle {
+  background: var(--light-bg);
+  width: 50px;
+  height: 26px;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.toggle-handle {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.dark-mode .toggle-handle {
+  transform: translateX(24px);
+}
+
+.user-actions a {
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.user-actions a:hover {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 30vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: 4rem 0 2rem;
+  background: linear-gradient(135deg, var(--accent), #4a7777);
+  color: white;
+  border-radius: var(--border-radius);
+  padding: 2rem 0;
+}
+
+.hero-content {
+  max-width: 800px;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+/* Tutorials Grid */
+.tutorials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tutorial-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  transform: translateY(0);
+}
+
+.dark-mode .tutorial-card {
+  box-shadow: var(--shadow-dark);
+}
+
+.tutorial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(18, 16, 14, 0.15);
+}
+
+.dark-mode .tutorial-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.tutorial-image {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tutorial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.tutorial-card:hover .tutorial-image img {
+  transform: scale(1.05);
+}
+
+.level-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tutorial-content {
+  padding: 1.8rem;
+}
+
+.tutorial-category {
+  display: inline-block;
+  padding: 5px 15px;
+  background: rgba(102, 153, 155, 0.1);
+  color: var(--accent);
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.tutorial-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  display: block;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.tutorial-card:hover .tutorial-title {
+  color: var(--accent);
+}
+
+.tutorial-excerpt {
+  color: var(--text-dark);
+  opacity: 0.8;
+  margin-bottom: 1.2rem;
+}
+
+.tutorial-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-dark);
+  opacity: 0.7;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(102, 153, 155, 0.1);
+  padding-top: 1rem;
+}
+
+/* Tutorial Detail Page Styles */
+.tutorial-detail {
+  max-width: 850px;
+  margin: 4rem auto;
+}
+
+.tutorial-header {
+  margin-bottom: 2.5rem;
+}
+
+.tutorial-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1.2rem;
+  color: var(--text-dark);
+}
+
+.tutorial-meta-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  opacity: 0.8;
+}
+
+.tutorial-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tutorial-content-area {
+  line-height: 1.8;
+}
+
+.step {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(102, 153, 155, 0.1);
+}
+
+.step:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.step-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.code-block {
+  background: var(--dark-bg);
+  color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 1.2rem 0;
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.dark-mode .code-block {
+  background: #252321;
+}
+
+.tutorial-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(102, 153, 155, 0.1);
+}
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--light-bg);
+  border-radius: 10px;
+  font-weight: 500;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.nav-button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.nav-button.next {
+  margin-left: auto;
+}
+
+/* Back to Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(102, 153, 155, 0.3);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 999;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Scroll Progress */
+.scroll-progress {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  height: 4px;
+  background: var(--accent);
+  z-index: 1000;
+  transition: width 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-in.appear {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav ul {
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .tutorials-grid {
+    grid-template-columns: 1fr;
+  }
+}               $(document).ready(function () {
+  // Initialize elements
+  initThemeToggle()
+  initAnimations()
+  initScrollProgress()
+  initBackToTop()
+  initCategoryTags()
+  initFormSubmissions()
+  loadArticles()
+
+  function initThemeToggle () {
+    const themeToggle = $('#themeToggle')
+    const currentTheme = localStorage.getItem('theme') || 'light'
+
+    // Apply saved theme
+    if (currentTheme === 'dark') {
+      $('body').addClass('dark-mode')
+    }
+
+    // Toggle theme on click
+    themeToggle.click(function () {
+      $('body').toggleClass('dark-mode')
+
+      // Save preference
+      const theme = $('body').hasClass('dark-mode') ? 'dark' : 'light'
+      localStorage.setItem('theme', theme)
+    })
+  }
+
+  function initAnimations () {
+    // Fade-in animations
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            $(entry.target).addClass('appear')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      {
+        threshold: 0.1
+      }
+    )
+
+    $('.fade-in').each(function () {
+      observer.observe(this)
+    })
+  }
+
+  function initScrollProgress () {
+    $(window).scroll(function () {
+      const scrollTop = $(this).scrollTop()
+      const scrollHeight = $('body').height() - $(window).height()
+      const scrollPercent = (scrollTop / scrollHeight) * 100
+      $('#scrollProgress').width(scrollPercent + '%')
+    })
+  }
+
+  function initBackToTop () {
+    const backToTop = $('#backToTop')
+
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 500) {
+        backToTop.addClass('show')
+      } else {
+        backToTop.removeClass('show')
+      }
+    })
+
+    backToTop.click(function () {
+      $('html, body').animate(
+        {
+          scrollTop: 0
+        },
+        900
+      )
+    })
+  }
+
+  function initCategoryTags () {
+    $('.category-tag').click(function (e) {
+      e.preventDefault()
+      $('.category-tag').removeClass('active')
+      $(this).addClass('active')
+
+      const category = $(this).data('category')
+      filterArticles(category)
+    })
+  }
+
+  function initFormSubmissions () {
+    // Newsletter form submission
+    $('.newsletter-form').submit(function (e) {
+      e.preventDefault()
+
+      const email = $(this).find('input').val()
+
+      if (email) {
+        $(this).html(
+          '<p style="color: white; font-size: 1.2rem;">✓ Thank you for subscribing!</p>'
+        )
+
+        setTimeout(() => {
+          $(this).html(`
+                                <input type="email" placeholder="Your email address" required>
+                                <button type="submit">Subscribe</button>
+                            `)
+          initFormSubmissions() // Reinitialize
+        }, 3000)
+      }
+    })
+  }
+
+  function loadArticles () {
+    $.ajax({
+      url: 'articles.json',
+      method: 'GET',
+      dataType: 'json',
+      success: function (articlesData) {
+        window.allArticles = articlesData.articles
+        renderArticles(window.allArticles)
+      },
+      error: function () {
+        $('#postsGrid').html(`
+                            <div class="section-header" style="margin-top: 2rem;">
+                                <h2>Failed to load articles</h2>
+                                <p>Please try again later.</p>
+                            </div>
+                        `)
+      }
+    })
+  }
+
+  function renderArticles (articles) {
+    const postsGrid = $('#postsGrid')
+    postsGrid.empty()
+
+    if (articles.length === 0) {
+      postsGrid.html(`
+                        <div class="section-header" style="margin-top: 2rem;">
+                            <h2>No articles found for this category</h2>
+                            <p>Try selecting a different category or check back later for new content</p>
+                        </div>
+                    `)
+      return
+    }
+
+    articles.forEach(article => {
+      // Create tag elements
+      let tagsHtml = ''
+      article.tags.forEach(tag => {
+        tagsHtml += `<span class="post-tag">${tag}</span>`
+      })
+
+      const articleHtml = `
+                        <article class="post-card fade-in" data-id="${article.id}">
+                            <div class="post-image">
+                                <img src="${article.image}" alt="${article.title}">
+                            </div>
+                            <div class="post-content">
+                                <span class="post-category">${article.category}</span>
+                                <a href="#" class="post-title" id="post-title">${article.title}</a>
+                                <p class="post-excerpt">${article.excerpt}</p>
+                                <div class="post-tags">${tagsHtml}</div>
+                                <div class="post-meta">
+                                    <div class="author">
+                                        <div class="author-avatar">${article.authorInitials}</div>
+                                        <span>${article.author}</span>
+                                    </div>
+                                    <span>${article.date}</span>
+                                </div>
+                            </div>
+                        </article>
+                    `
+
+      postsGrid.append(articleHtml)
+    })
+
+    // Reinitialize animations for new elements
+    initAnimations()
+  }
+
+  function filterArticles (category) {
+    if (category === 'all') {
+      renderArticles(window.allArticles)
+      return
+    }
+
+    // Convert category to match article categories
+    let categoryMap = {
+      'artificial-intelligence': 'Artificial Intelligence',
+      'web-development': 'Web Development',
+      cybersecurity: 'Cybersecurity',
+      blockchain: 'Blockchain',
+      'cloud-computing': 'Cloud Computing',
+      gadgets: 'Gadgets',
+      'emerging-tech': 'Emerging Tech'
+    }
+
+    const targetCategory = categoryMap[category]
+
+    // Filter articles by category
+    const filteredArticles = window.allArticles.filter(
+      article => article.category === targetCategory
+    )
+
+    renderArticles(filteredArticles)
+  }
+
+  // Smooth scrolling for navigation links
+  $('a[href*="#"]')
+    .not('[href="#"]')
+    .not('[href="#0"]')
+    .click(function (event) {
+      if (
+        location.pathname.replace(/^\//, '') ==
+          this.pathname.replace(/^\//, '') &&
+        location.hostname == this.hostname
+      ) {
+        let target = $(this.hash)
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']')
+        if (target.length) {
+          event.preventDefault()
+          $('html, body').animate(
+            {
+              scrollTop: target.offset().top - 80
+            },
+            800
+          )
+        }
+      }
+    })
+})
+
+
+$('#postsGrid').on('click', '.post-title', function(e) {
+    e.preventDefault();
+    const articleId = $(this).closest('.post-card').data('id');
+    window.location.href = `./article-info.html?id=${articleId}`;
+});
+
+
+$(document).ready(function () {
+  // Initialize theme toggle
+  initThemeToggle()
+  handleFormSubmission()
+
+  function initThemeToggle () {
+    const themeToggle = $('#themeToggle')
+    const currentTheme = localStorage.getItem('theme') || 'light'
+
+    // Apply saved theme
+    if (currentTheme === 'dark') {
+      $('body').addClass('dark-mode')
+    }
+
+    // Toggle theme on click
+    themeToggle.click(function () {
+      $('body').toggleClass('dark-mode')
+
+      // Save preference
+      const theme = $('body').hasClass('dark-mode') ? 'dark' : 'light'
+      localStorage.setItem('theme', theme)
+    })
+  }
+
+  function handleFormSubmission () {
+    $('#loginForm').submit(function (e) {
+      e.preventDefault()
+
+      const email = $('#email').val()
+      const password = $('#password').val()
+      const errorMessage = $('#errorMessage')
+
+      // Clear previous messages
+      errorMessage.hide()
+      errorMessage.text('')
+
+      // Basic validation
+      if (!email || !password) {
+        errorMessage.text('Please enter both email and password')
+        errorMessage.show()
+        return
+      }
+
+      // Show loading state
+      const submitBtn = $(this).find('button[type="submit"]')
+      const originalText = submitBtn.html()
+      submitBtn.html('<i class="fas fa-spinner fa-spin"></i> Signing In...')
+      submitBtn.prop('disabled', true)
+
+      // Simulate API call
+      setTimeout(() => {
+        // In a real app, you would validate with a server
+        // For this demo, we'll check against a hardcoded user
+        if (email === 'user@example.com' && password === 'testapp123') {
+          // Successful login
+          localStorage.setItem('isLoggedIn', 'true')
+          localStorage.setItem('userEmail', email)
+          localStorage.setItem('userName', 'John Doe')
+
+          // Redirect to homepage
+          window.location.href = './homepage.html'
+        } else {
+          // Failed login
+          errorMessage.text('Invalid email or password. Please try again.')
+          errorMessage.show()
+          submitBtn.html(originalText)
+          submitBtn.prop('disabled', false)
+        }
+      }, 1000)
+    })
+
+    // Forgot password handling
+    $('.forgot-password').click(function (e) {
+      e.preventDefault()
+      const email = $('#email').val()
+      const errorMessage = $('#errorMessage')
+      const successMessage = $('#successMessage')
+
+      errorMessage.hide()
+      successMessage.hide()
+
+      if (!email) {
+        errorMessage.text('Please enter your email address first')
+        errorMessage.show()
+        return
+      }
+
+      // Show loading
+      $('.forgot-password').html('<i class="fas fa-spinner fa-spin"></i>')
+
+      // Simulate password reset
+      setTimeout(() => {
+        successMessage.html(
+          `Password reset instructions have been sent to <strong>${email}</strong>`
+        )
+        successMessage.show()
+        $('.forgot-password').html('Forgot password?')
+      }, 800)
+    })
+  }
+})
+          $(document).ready(function() {
+            // Initialize theme toggle
+            initThemeToggle();
+            initScrollProgress();
+            initBackToTop();
+            
+            // Load tutorial data from JSON
+            loadTutorialData();
+            
+            function initThemeToggle() {
+                const themeToggle = $('#themeToggle');
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                
+                // Apply saved theme
+                if (currentTheme === 'dark') {
+                    $('body').addClass('dark-mode');
+                }
+                
+                // Toggle theme on click
+                themeToggle.click(function() {
+                    $('body').toggleClass('dark-mode');
+                    
+                    // Save preference
+                    const theme = $('body').hasClass('dark-mode') ? 'dark' : 'light';
+                    localStorage.setItem('theme', theme);
+                });
+            }
+            
+            function initScrollProgress() {
+                $(window).scroll(function() {
+                    const scrollTop = $(this).scrollTop();
+                    const scrollHeight = $('body').height() - $(window).height();
+                    const scrollPercent = (scrollTop / scrollHeight) * 100;
+                    $('#scrollProgress').width(scrollPercent + '%');
+                });
+            }
+            
+            function initBackToTop() {
+                const backToTop = $('#backToTop');
+                
+                $(window).scroll(function() {
+                    if ($(this).scrollTop() > 500) {
+                        backToTop.addClass('show');
+                    } else {
+                        backToTop.removeClass('show');
+                    }
+                });
+                
+                backToTop.click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 800);
+                });
+            }
+            
+            function loadTutorialData() {
+                // In a real app, this would be an AJAX call to fetch the JSON
+                // For this demo, we'll use a hardcoded version of the JSON data
+                const tutorialData = {
+                    "tutorials": [
+                        {
+                            "id": 101,
+                            "title": "Building Your First React Component",
+                            "category": "Web Development",
+                            "level": "Beginner",
+                            "duration": "30 min",
+                            "excerpt": "Learn the fundamentals of React components, props, and state in this hands-on tutorial.",
+                            "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "steps": [
+                                {
+                                    "title": "Setting Up Your Environment",
+                                    "content": "First, let's set up your development environment. Install Node.js and create a new React app using Create React App:",
+                                    "code": "npx create-react-app my-first-component\ncd my-first-component\nnpm start"
+                                },
+                                {
+                                    "title": "Creating a Basic Component",
+                                    "content": "Components are the building blocks of React applications. Let's create a simple functional component:",
+                                    "code": "import React from 'react';\n\nfunction Greeting() {\n  return <h1>Hello, React!</h1>;\n}\n\nexport default Greeting;"
+                                },
+                                {
+                                    "title": "Adding Props",
+                                    "content": "Props allow you to pass data to components. Let's modify our component to accept a name prop:",
+                                    "code": "function Greeting({ name }) {\n  return <h1>Hello, {name}!</h1>;\n}\n\n// Usage:\n// <Greeting name=\"TechPulse\" />"
+                                },
+                                {
+                                    "title": "Managing State",
+                                    "content": "Let's add some interactivity using the useState hook:",
+                                    "code": "import { useState } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}"
+                                },
+                                {
+                                    "title": "Styling Your Component",
+                                    "content": "Let's add some basic styling using CSS modules:",
+                                    "code": "// Counter.module.css\n.counter {\n  padding: 20px;\n  border: 1px solid #66999B;\n  border-radius: 8px;\n}\n\n.button {\n  background: #66999B;\n  color: white;\n  border: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  cursor: pointer;\n}\n\n// Counter.js\nimport styles from './Counter.module.css';\n\nfunction Counter() {\n  // ... existing code\n  return (\n    <div className={styles.counter}>\n      <p>Count: {count}</p>\n      <button \n        className={styles.button}\n        onClick={() => setCount(count + 1)}>\n        Increment\n      </button>\n    </div>\n  );\n}"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 102,
+                            "title": "Implementing Authentication in React",
+                            "category": "Web Development",
+                            "level": "Intermediate",
+                            "duration": "45 min",
+                            "excerpt": "Learn how to add secure authentication to your React application using JWT and context API.",
+                            "image": " https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                            "steps": [
+                                {
+                                    "title": "Setting Up Authentication Context",
+                                    "content": "We'll create an authentication context to manage user state throughout our application:",
+                                    "code": "import React, { createContext, useState, useEffect, useContext } from 'react';\n\nconst AuthContext = createContext();\n\nexport function AuthProvider({ children }) {\n  const [user, setUser] = useState(null);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    // Check if user is stored in localStorage\n    const storedUser = localStorage.getItem('user');\n    if (storedUser) {\n      setUser(JSON.parse(storedUser));\n    }\n    setLoading(false);\n  }, []);\n\n  // Login function\n  const login = (userData) => {\n    setUser(userData);\n    localStorage.setItem('user', JSON.stringify(userData));\n  };\n\n  // Logout function\n  const logout = () => {\n    setUser(null);\n    localStorage.removeItem('user');\n  };\n\n  const value = {\n    user,\n    loading,\n    login,\n    logout\n  };\n\n  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;\n}\n\nexport function useAuth() {\n  return useContext(AuthContext);\n}"
+                                },
+                                {
+                                    "title": "Creating API Service",
+                                    "content": "Let's create a service to handle authentication requests:",
+                                    "code": "const API_URL = ' https://api.yourapp.com/auth ';\n\nexport const authService = {\n  async login(email, password) {\n    const response = await fetch(`${API_URL}/login`, {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify({ email, password })\n    });\n\n    if (!response.ok) {\n      throw new Error('Login failed');\n    }\n\n    return response.json();\n  },\n\n  async register(userData) {\n    const response = await fetch(`${API_URL}/register`, {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify(userData)\n    });\n\n    if (!response.ok) {\n      throw new Error('Registration failed');\n    }\n\n    return response.json();\n  },\n\n  async getCurrentUser() {\n    const token = localStorage.getItem('token');\n    if (!token) return null;\n\n    const response = await fetch(`${API_URL}/me`, {\n      headers: { 'Authorization': `Bearer ${token}` }\n    });\n\n    if (!response.ok) {\n      localStorage.removeItem('token');\n      return null;\n    }\n\n    return response.json();\n  }\n};"
+                                }
+                            ]
+                        }
+                    ]
+                };
+                
+                // Get tutorial ID from URL (in a real app)
+                const tutorialId = 101; // For demo purposes
+                
+                // Find the tutorial
+                const tutorial = tutorialData.tutorials.find(t => t.id === tutorialId);
+                
+                if (tutorial) {
+                    // Update header
+                    $('#tutorialTitle').text(tutorial.title);
+                    $('.tutorial-category').text(tutorial.category);
+                    $('.tutorial-meta-row').html(`
+                        <div class="tutorial-meta-item">
+                            <i class="fas fa-layer-group"></i>
+                            <span>${tutorial.category}</span>
+                        </div>
+                        <div class="tutorial-meta-item">
+                            <i class="fas fa-signal"></i>
+                            <span>${tutorial.level} Level</span>
+                        </div>
+                        <div class="tutorial-meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>${tutorial.duration} read</span>
+                        </div>
+                    `);
+                    $('#tutorialExcerpt').text(tutorial.excerpt);
+                    
+                    // Generate steps
+                    let stepsHtml = '';
+                    tutorial.steps.forEach((step, index) => {
+                        stepsHtml += `
+                        <div class="step fade-in">
+                            <h3 class="step-title">
+                                <span class="step-number">${index + 1}</span>
+                                ${step.title}
+                            </h3>
+                            <p>${step.content}</p>
+                            <div class="code-block">
+                                <code>${escapeHtml(step.code)}</code>
+                            </div>
+                        </div>
+                        `;
+                    });
+                    
+                    $('#tutorialSteps').html(stepsHtml);
+                    
+                    // Initialize fade-in animations
+                    initAnimations();
+                }
+            }
+            
+            // Helper function to escape HTML for code display
+            function escapeHtml(unsafe) {
+                return unsafe
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "<")
+                    .replace(/>/g, ">")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+            
+            function initAnimations() {
+                // Fade-in animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            $(entry.target).addClass('appear');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+                
+                $('.fade-in').each(function() {
+                    observer.observe(this);
+                });
+            }
+        });
+
+       

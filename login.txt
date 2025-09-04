@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | TechPulse</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <div class="toggle-handle"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to access your personalized tech experience</p>
+            </div>
+            <div class="login-body">
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                    
+                    <div class="login-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn">Sign In</button>
+                    
+                    <div class="social-login">
+                        <p>Or continue with</p>
+                        <div class="social-buttons">
+                            <a href="#" class="social-btn"><i class="fab fa-google"></i> Google</a>
+                            <a href="#" class="social-btn"><i class="fab fa-apple"></i> Apple</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="login-footer">
+                Don't have an account? <a href="register.html">Create one</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 TechPulse. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/login.js">
+        $(document).ready(function () {
+  // Initialize theme toggle
+  initThemeToggle()
+  handleFormSubmission()
+
+  function initThemeToggle () {
+    const themeToggle = $('#themeToggle')
+    const currentTheme = localStorage.getItem('theme') || 'light'
+
+    // Apply saved theme
+    if (currentTheme === 'dark') {
+      $('body').addClass('dark-mode')
+    }
+
+    // Toggle theme on click
+    themeToggle.click(function () {
+      $('body').toggleClass('dark-mode')
+
+      // Save preference
+      const theme = $('body').hasClass('dark-mode') ? 'dark' : 'light'
+      localStorage.setItem('theme', theme)
+    })
+  }
+
+  function handleFormSubmission () {
+    $('#loginForm').submit(function (e) {
+      e.preventDefault()
+
+      const email = $('#email').val()
+      const password = $('#password').val()
+      const errorMessage = $('#errorMessage')
+
+      // Clear previous messages
+      errorMessage.hide()
+      errorMessage.text('')
+
+      // Basic validation
+      if (!email || !password) {
+        errorMessage.text('Please enter both email and password')
+        errorMessage.show()
+        return
+      }
+
+      // Show loading state
+      const submitBtn = $(this).find('button[type="submit"]')
+      const originalText = submitBtn.html()
+      submitBtn.html('<i class="fas fa-spinner fa-spin"></i> Signing In...')
+      submitBtn.prop('disabled', true)
+
+      // Simulate API call
+      setTimeout(() => {
+        // In a real app, you would validate with a server
+        // For this demo, we'll check against a hardcoded user
+        if (email === 'user@example.com' && password === 'testapp123') {
+          // Successful login
+          localStorage.setItem('isLoggedIn', 'true')
+          localStorage.setItem('userEmail', email)
+          localStorage.setItem('userName', 'John Doe')
+
+          // Redirect to homepage
+          window.location.href = './homepage.html'
+        } else {
+          // Failed login
+          errorMessage.text('Invalid email or password. Please try again.')
+          errorMessage.show()
+          submitBtn.html(originalText)
+          submitBtn.prop('disabled', false)
+        }
+      }, 1000)
+    })
+
+    // Forgot password handling
+    $('.forgot-password').click(function (e) {
+      e.preventDefault()
+      const email = $('#email').val()
+      const errorMessage = $('#errorMessage')
+      const successMessage = $('#successMessage')
+
+      errorMessage.hide()
+      successMessage.hide()
+
+      if (!email) {
+        errorMessage.text('Please enter your email address first')
+        errorMessage.show()
+        return
+      }
+
+      // Show loading
+      $('.forgot-password').html('<i class="fas fa-spinner fa-spin"></i>')
+
+      // Simulate password reset
+      setTimeout(() => {
+        successMessage.html(
+          `Password reset instructions have been sent to <strong>${email}</strong>`
+        )
+        successMessage.show()
+        $('.forgot-password').html('Forgot password?')
+      }, 800)
+    })
+  }
+})
+
+    </script>
+</body>
+</html>
