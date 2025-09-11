@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials | TechPulse</title>
+    <link rel="stylesheet" href="./css/tutorials.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Back to Top Button -->
+    <div id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="./index.html" class="logo">
+                <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./index.html#articles">Articles</a></li>
+                    <li><a href="./tutorials.html" class="active">Tutorials</a></li>
+                    <li><a href="./index.html">Reviews</a></li>
+                    <li><a href="./index.html">News</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-handle"></div>
+                </div>
+                
+                <div class="user-actions" id="userActions">
+                    <!-- User status will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content fade-in">
+            <h1>Step-by-Step Tutorials</h1>
+            <p>Practical, hands-on guides to help you master the latest technologies and techniques</p>
+        </div>
+    </section>
+
+    <!-- Tutorial Detail -->
+    <div class="container tutorial-detail">
+        <div class="tutorial-header fade-in">
+            <h1 id="tutorialTitle">Building Your First React Component</h1>
+            <div class="tutorial-meta-row">
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Web Development</span>
+                </div>
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-signal"></i>
+                    <span>Beginner Level</span>
+                </div>
+                <div class="tutorial-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>30 min read</span>
+                </div>
+            </div>
+            <p id="tutorialExcerpt" class="tutorial-excerpt">Learn the fundamentals of React components, props, and state in this hands-on tutorial.</p>
+        </div>
+        
+        <div class="tutorial-content-area fade-in">
+            <div id="tutorialSteps">
+                <!-- Tutorial steps will be populated dynamically -->
+            </div>
+            
+            <div class="tutorial-navigation">
+                <a href="#" class="nav-button">
+                    <i class="fas fa-arrow-left"></i> Previous
+                </a>
+                <a href="#" class="nav-button next">
+                    Next <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/tutorials.js"></script>
+    <script>
+        // User Authentication Functions
+        $(document).ready(function() {
+            initUserAuth();
+        });
+
+        function initUserAuth() {
+            updateUserStatus();
+
+            // Check user status periodically
+            setInterval(updateUserStatus, 30000); // Check every 30 seconds
+        }
+
+        function updateUserStatus() {
+            fetch('/api/user/status')
+                .then(response => response.json())
+                .then(data => {
+                    const userActions = $('#userActions');
+
+                    if (data.authenticated) {
+                        // User is logged in
+                        userActions.html(`
+                            <div class="user-menu" style="display: flex; align-items: center; gap: 1rem;">
+                                <span style="color: var(--text); font-size: 0.9rem;">Welcome, ${data.user.name}</span>
+                                <div class="user-dropdown" style="position: relative;">
+                                    <button class="user-btn" style="background: none; border: none; color: var(--text); cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fas fa-user"></i>
+                                        <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                                    </button>
+                                    <div class="dropdown-menu" style="display: none; position: absolute; top: 100%; right: 0; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0; min-width: 150px; z-index: 1000; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                                        <a href="#" onclick="handleLogout()" style="display: block; padding: 0.5rem 1rem; color: var(--text); text-decoration: none;">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+
+                        // Add dropdown toggle functionality
+                        $('.user-btn').click(function(e) {
+                            e.stopPropagation();
+                            $('.dropdown-menu').toggle();
+                        });
+
+                        // Close dropdown when clicking outside
+                        $(document).click(function() {
+                            $('.dropdown-menu').hide();
+                        });
+                    } else {
+                        // User is not logged in
+                        userActions.html(`
+                            <a href="./login.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Login
+                            </a>
+                        `);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking user status:', error);
+                    // Fallback to login link
+                    $('#userActions').html(`
+                        <a href="./login.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login
+                        </a>
+                    `);
+                });
+        }
+
+        // Global logout function
+        function handleLogout() {
+            fetch('/api/user/logout', { method: 'POST' })
+                .then(() => {
+                    updateUserStatus();
+                })
+                .catch(error => {
+                    console.error('Logout error:', error);
+                    // Force page reload to clear session
+                    window.location.reload();
+                });
+        }
+    </script>
+</body>
+</html>

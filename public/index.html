@@ -11,11 +11,11 @@
 <body>
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" id="scrollProgress"></div>
-    
+
     <!-- Back to Top Button -->
-    <div id="backToTop">
+    <!-- <div id="backToTop">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </div> -->
 
     <!-- Header -->
     <header>
@@ -23,7 +23,7 @@
             <a href="#" class="logo">
                 <i class="fas fa-microchip"></i>Tech<span>Pulse</span>
             </a>
-            
+
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -33,14 +33,14 @@
                     <li><a href="#">News</a></li>
                 </ul>
             </nav>
-            
+
             <div class="header-actions">
                 <div class="theme-toggle" id="themeToggle">
                     <div class="toggle-handle"></div>
                 </div>
-                
-                <div class="user-actions">
-                    <a href="./index.html"><i class="fas fa-user"></i></a>
+
+                <div class="user-actions" id="userActions">
+                    <!-- User status will be populated by JavaScript -->
                 </div>
             </div>
         </div>
@@ -53,14 +53,14 @@
             <div class="shape shape-2"></div>
             <div class="shape shape-3"></div>
         </div>
-        
+
         <div class="container">
             <div class="hero-content fade-in">
                 <h1>The Future of Technology, Today</h1>
                 <p>TechPulse delivers cutting-edge insights, in-depth tutorials, and the latest news in the ever-evolving world of technology. Stay ahead of the curve with our expertly crafted content.</p>
                 <a href="#articles" class="btn">Explore Articles</a>
             </div>
-            
+
             <div class="hero-illustration">
                 <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -69,20 +69,20 @@
                             <stop offset="100%" stop-color="#88bcbc" />
                         </linearGradient>
                     </defs>
-                    
+
                     <rect x="50" y="50" width="500" height="300" rx="20" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.2" />
-                    
+
                     <circle cx="150" cy="150" r="40" fill="url(#grad1)" opacity="0.15" />
                     <circle cx="450" cy="200" r="60" fill="url(#grad1)" opacity="0.1" />
                     <circle cx="300" cy="280" r="30" fill="url(#grad1)" opacity="0.2" />
-                    
+
                     <rect x="120" y="200" width="120" height="60" rx="10" fill="url(#grad1)" opacity="0.1" />
                     <rect x="350" y="120" width="100" height="40" rx="5" fill="url(#grad1)" opacity="0.15" />
-                    
+
                     <path d="M180 150 L280 100 L350 150 L300 220 L200 200 Z" fill="url(#grad1)" opacity="0.08" />
-                    
+
                     <circle cx="300" cy="150" r="80" fill="none" stroke="url(#grad1)" stroke-width="1.5" stroke-dasharray="5,5" opacity="0.15" />
-                    
+
                     <text x="300" y="160" text-anchor="middle" fill="url(#grad1)" font-family="Arial" font-size="24" font-weight="bold" opacity="0.8">Tech</text>
                     <text x="300" y="190" text-anchor="middle" fill="url(#grad1)" font-family="Arial" font-size="24" font-weight="bold" opacity="0.8">Pulse</text>
                 </svg>
@@ -97,7 +97,7 @@
                 <h3 class="categories-title">Explore Topics</h3>
                 <a href="#" style="color: var(--accent); font-weight: 500;">View All</a>
             </div>
-            
+
             <div class="category-tags" id="categoryTags">
                 <a href="#" class="category-tag active" data-category="all">All</a>
                 <a href="#" class="category-tag" data-category="artificial-intelligence">Artificial Intelligence</a>
@@ -112,12 +112,12 @@
     </div>
 
     <!-- Blog Posts -->
-    <section id="articles" class="container" style="margin: 4rem 0 6rem;">
+    <section id="articles" class="container">
         <div class="section-header fade-in">
             <h2>Latest Articles</h2>
             <p>Stay updated with the latest in technology, programming, and innovation</p>
         </div>
-        
+
         <div class="posts-grid" id="postsGrid">
             <!-- Articles will be populated dynamically from JSON -->
         </div>
@@ -128,7 +128,7 @@
         <div class="container">
             <h2>Stay Updated</h2>
             <p>Subscribe to our newsletter for the latest tech insights, tutorials, and exclusive content delivered straight to your inbox.</p>
-            
+
             <form class="newsletter-form">
                 <input type="email" placeholder="Your email address" required>
                 <button type="submit">Subscribe</button>
@@ -152,7 +152,7 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
@@ -164,7 +164,7 @@
                         <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-col">
                     <h3>Categories</h3>
                     <ul class="footer-links">
@@ -176,7 +176,7 @@
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Cloud Computing</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-col">
                     <h3>Resources</h3>
                     <ul class="footer-links">
@@ -185,11 +185,10 @@
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Tech Glossary</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Career Guides</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Tool Recommendations</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Community Forum</a></li>
                     </ul>
                 </div>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2023 TechPulse. All rights reserved. Crafted with <i class="fas fa-heart" style="color: var(--accent);"></i> and smooth animations</p>
             </div>

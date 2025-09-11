@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | TechPulse</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .verification-notice {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(102, 153, 155, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(102, 153, 155, 0.2);
+        }
+
+        .verification-notice i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .verification-notice h3 {
+            color: var(--text);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .verification-notice p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .verification-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .verification-actions .btn {
+            width: 100%;
+        }
+
+        .verification-footer {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .link-secondary {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            transition: var(--transition);
+        }
+
+        .link-secondary:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 480px) {
+            .verification-actions {
+                gap: 0.8rem;
+            }
+
+            .verification-notice {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <div class="toggle-handle"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-section">
+                    <div class="logo">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h1>Join TechPulse</h1>
+                    <p>Create your account to start commenting and engaging with the community</p>
+                </div>
+            </div>
+
+            <div class="login-body">
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+
+                <!-- Registration Form -->
+                <form id="registerForm">
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input type="text" id="name" placeholder=" " required>
+                            <label for="name">
+                                <i class="fas fa-user"></i> Full Name
+                            </label>
+                            <div class="input-focus-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input type="email" id="email" placeholder=" " required>
+                            <label for="email">
+                                <i class="fas fa-envelope"></i> Email Address
+                            </label>
+                            <div class="input-focus-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input type="password" id="password" placeholder=" " required minlength="6">
+                            <label for="password">
+                                <i class="fas fa-lock"></i> Password
+                            </label>
+                            <button type="button" class="password-toggle" data-target="password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <div class="input-focus-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input type="password" id="confirmPassword" placeholder=" " required minlength="6">
+                            <label for="confirmPassword">
+                                <i class="fas fa-lock"></i> Confirm Password
+                            </label>
+                            <button type="button" class="password-toggle" data-target="confirmPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <div class="input-focus-line"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </span>
+                        <div class="btn-loader">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                </form>
+
+                <!-- Email Verification Form -->
+                <form id="verificationForm" style="display: none;">
+                    <div class="verification-notice">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Verification Required</h3>
+                        <p>We've sent a 6-digit verification code to your email address. Please enter it below to complete your registration.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <input type="text" id="verificationCode" placeholder=" " maxlength="6" required>
+                            <label for="verificationCode">
+                                <i class="fas fa-key"></i> Verification Code
+                            </label>
+                            <div class="input-focus-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="verification-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">
+                                <i class="fas fa-check"></i> Verify Email
+                            </span>
+                            <div class="btn-loader">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+
+                        <button type="button" id="resendCode" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Resend Code
+                        </button>
+                    </div>
+
+                    <div class="verification-footer">
+                        <button type="button" id="backToRegister" class="link-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to Registration
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="login-footer">
+                <span>Already have an account?</span>
+                <a href="./login.html" class="link-primary">Sign in</a>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="decorative-elements">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TechPulse. All rights reserved.</p>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize theme toggle
+            initThemeToggle()
+            initPasswordToggles()
+            handleFormSubmission()
+            handleVerification()
+            handleResendCode()
+            handleBackToRegister()
+        })
+
+        function initThemeToggle () {
+            const themeToggle = $('#themeToggle')
+            const currentTheme = localStorage.getItem('theme') || 'light'
+
+            // Apply saved theme
+            if (currentTheme === 'dark') {
+                $('body').addClass('dark-mode')
+            }
+
+            // Toggle theme on click
+            themeToggle.click(function () {
+                $('body').toggleClass('dark-mode')
+
+                // Save preference
+                const theme = $('body').hasClass('dark-mode') ? 'dark' : 'light'
+                localStorage.setItem('theme', theme)
+            })
+        }
+
+        function initPasswordToggles() {
+            $('.password-toggle').click(function() {
+                const targetId = $(this).data('target')
+                const input = $('#' + targetId)
+                const icon = $(this).find('i')
+
+                if (input.attr('type') === 'password') {
+                    input.attr('type', 'text')
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash')
+                } else {
+                    input.attr('type', 'password')
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye')
+                }
+            })
+        }
+
+        function handleFormSubmission () {
+            $('#registerForm').submit(function (e) {
+                e.preventDefault()
+
+                const name = $('#name').val().trim()
+                const email = $('#email').val().trim()
+                const password = $('#password').val()
+                const confirmPassword = $('#confirmPassword').val()
+                const errorMessage = $('#errorMessage')
+                const successMessage = $('#successMessage')
+
+                // Clear previous messages
+                errorMessage.hide()
+                successMessage.hide()
+
+                // Basic validation
+                if (!name || !email || !password || !confirmPassword) {
+                    errorMessage.html('<i class="fas fa-exclamation-triangle"></i> Please fill in all fields')
+                    errorMessage.show()
+                    return
+                }
+
+                if (password !== confirmPassword) {
+                    errorMessage.html('<i class="fas fa-exclamation-triangle"></i> Passwords do not match')
+                    errorMessage.show()
+                    return
+                }
+
+                if (password.length < 6) {
+                    errorMessage.html('<i class="fas fa-exclamation-triangle"></i> Password must be at least 6 characters long')
+                    errorMessage.show()
+                    return
+                }
+
+                // Show loading state
+                const submitBtn = $(this).find('button[type="submit"]')
+                submitBtn.addClass('loading')
+                submitBtn.prop('disabled', true)
+
+                // Store user data for verification
+                window.userData = { name, email, password }
+
+                // Make API call to backend
+                fetch('/api/user/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        password: password
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    submitBtn.removeClass('loading')
+                    submitBtn.prop('disabled', false)
+
+                    if (data.user) {
+                        // Successful registration - show verification form
+                        $('#registerForm').hide()
+                        $('#verificationForm').show()
+
+                        if (data.emailSent) {
+                            $('#loginTitle').text('Verify Your Email')
+                            $('#loginSubtitle').text('Check your email for the verification code')
+                        } else {
+                            $('#loginTitle').text('Verify Your Email')
+                            $('#loginSubtitle').text('Check the server console for your verification code')
+                            // Show verification code if provided
+                            if (data.verificationCode) {
+                                successMessage.html(`<i class="fas fa-info-circle"></i> For testing: Your verification code is <strong>${data.verificationCode}</strong>`)
+                                successMessage.show()
+                            }
+                        }
+                    } else {
+                        // Failed registration
+                        errorMessage.html('<i class="fas fa-exclamation-triangle"></i> ' + (data.error || 'Registration failed. Please try again.'))
+                        errorMessage.show()
+                    }
+                })
+                .catch(error => {
+                    console.error('Registration error:', error)
+                    errorMessage.html('<i class="fas fa-exclamation-triangle"></i> Registration failed. Please try again.')
+                    errorMessage.show()
+                    submitBtn.removeClass('loading')
+                    submitBtn.prop('disabled', false)
+                })
+            })
+        }
+
+        // Handle email verification
+        function handleVerification() {
+            $('#verificationForm').submit(function (e) {
+                e.preventDefault()
+
+                const code = $('#verificationCode').val().trim()
+                const errorMessage = $('#errorMessage')
+                const successMessage = $('#successMessage')
+
+                // Clear previous messages
+                errorMessage.hide()
+                successMessage.hide()
+
+                if (!code || code.length !== 6) {
+                    errorMessage.html('<i class="fas fa-exclamation-triangle"></i> Please enter a valid 6-digit verification code')
+                    errorMessage.show()
+                    return
+                }
+
+                // Show loading state
+                const submitBtn = $(this).find('button[type="submit"]')
+                submitBtn.addClass('loading')
+                submitBtn.prop('disabled', true)
+
+                // Verify email
+                fetch('/api/user/verify-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: window.userData.email,
+                        code: code
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    submitBtn.removeClass('loading')
+                    submitBtn.prop('disabled', false)
+
+                    if (data.message) {
+                        // Successful verification
+                        successMessage.html('<i class="fas fa-check-circle"></i> Email verified successfully! Redirecting to login...')
+                        successMessage.show()
+
+                        // Redirect to login after a short delay
+                        setTimeout(() => {
+                            window.location.href = './login.html'
+                        }, 2000)
+                    } else {
+                        // Failed verification
+                        errorMessage.html('<i class="fas fa-exclamation-triangle"></i> ' + (data.error || 'Verification failed. Please try again.'))
+                        errorMessage.show()
+                    }
+                })
+                .catch(error => {
+                    console.error('Verification error:', error)
+                    errorMessage.html('<i class="fas fa-exclamation-triangle"></i> Verification failed. Please try again.')
+                    errorMessage.show()
+                    submitBtn.removeClass('loading')
+                    submitBtn.prop('disabled', false)
+                })
+            })
+        }
+
+        // Handle resend verification code
+        function handleResendCode() {
+            $('#resendCode').click(function () {
+                const errorMessage = $('#errorMessage')
+                const successMessage = $('#successMessage')
+
+                // Clear previous messages
+                errorMessage.hide()
+                successMessage.hide()
+
+                // Show loading state
+                const resendBtn = $(this)
+                const originalText = resendBtn.html()
+                resendBtn.html('<i class="fas fa-spinner fa-spin"></i>')
+                resendBtn.prop('disabled', true)
+
+                // Resend verification code
+                fetch('/api/user/resend-verification', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: window.userData.email
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        if (data.emailSent) {
+                            successMessage.html('<i class="fas fa-check-circle"></i> Verification code sent successfully!')
+                            successMessage.show()
+                        } else {
+                            successMessage.html(`<i class="fas fa-info-circle"></i> ${data.message}`)
+                            if (data.verificationCode) {
+                                successMessage.append(`<br><strong>For testing: ${data.verificationCode}</strong>`)
+                            }
+                            successMessage.show()
+                        }
+                    } else {
+                        errorMessage.html('<i class="fas fa-exclamation-triangle"></i> ' + (data.error || 'Failed to resend verification code.'))
+                        errorMessage.show()
+                    }
+                })
+                .catch(error => {
+                    console.error('Resend error:', error)
+                    errorMessage.html('<i class="fas fa-exclamation-triangle"></i> Failed to resend verification code.')
+                    errorMessage.show()
+                })
+                .finally(() => {
+                    resendBtn.html(originalText)
+                    resendBtn.prop('disabled', false)
+                })
+            })
+        }
+
+        // Handle back to registration
+        function handleBackToRegister() {
+            $('#backToRegister').click(function () {
+                $('#verificationForm').hide()
+                $('#registerForm').show()
+                $('#loginTitle').text('Join TechPulse')
+                $('#loginSubtitle').text('Create your account to start commenting and engaging with the community')
+                $('#errorMessage').hide()
+                $('#successMessage').hide()
+            })
+        }
+    </script>
+</body>
+</html>

@@ -6,20 +6,25 @@ $(document).ready(function () {
   initBackToTop()
   initCategoryTags()
   initFormSubmissions()
+  initUserAuth()
   loadArticles()
 
   function initThemeToggle () {
     const themeToggle = $('#themeToggle')
+    if (!themeToggle.length) return
+
     const currentTheme = localStorage.getItem('theme') || 'light'
 
     // Apply saved theme
     if (currentTheme === 'dark') {
       $('body').addClass('dark-mode')
+      themeToggle.addClass('active')
     }
 
     // Toggle theme on click
     themeToggle.click(function () {
       $('body').toggleClass('dark-mode')
+      themeToggle.toggleClass('active')
 
       // Save preference
       const theme = $('body').hasClass('dark-mode') ? 'dark' : 'light'
@@ -47,6 +52,8 @@ $(document).ready(function () {
       observer.observe(this)
     })
   }
+
+  window.initAnimations = initAnimations;
 
   function initScrollProgress () {
     $(window).scroll(function () {
@@ -114,11 +121,12 @@ $(document).ready(function () {
 
   function loadArticles () {
     $.ajax({
-      url: 'articles.json',
+      url: '/api/posts',
       method: 'GET',
       dataType: 'json',
-      success: function (articlesData) {
-        window.allArticles = articlesData.articles
+      success: function (response) {
+        // API returns { articles: [...] } format
+        window.allArticles = response.articles || []
         renderArticles(window.allArticles)
       },
       error: function () {
@@ -165,7 +173,7 @@ $(document).ready(function () {
                                 <div class="post-tags">${tagsHtml}</div>
                                 <div class="post-meta">
                                     <div class="author">
-                                        <div class="author-avatar">${article.authorInitials}</div>
+                                        <div class="author-avatar">${article.author_initials || 'N/A'}</div>
                                         <span>${article.author}</span>
                                     </div>
                                     <span>${article.date}</span>
@@ -208,6 +216,81 @@ $(document).ready(function () {
     renderArticles(filteredArticles)
   }
 
+  function initUserAuth () {
+    updateUserStatus()
+
+    // Check user status periodically
+    setInterval(updateUserStatus, 30000) // Check every 30 seconds
+  }
+
+  function updateUserStatus () {
+    fetch('/api/user/status')
+      .then(response => response.json())
+      .then(data => {
+        const userActions = $('#userActions')
+
+        if (data.authenticated) {
+          // User is logged in
+          userActions.html(`
+            <div class="user-menu" style="display: flex; align-items: center; gap: 1rem;">
+              <span style="color: var(--text); font-size: 0.9rem;">Welcome, ${data.user.name}</span>
+              <div class="user-dropdown" style="position: relative;">
+                <button class="user-btn" style="background: none; border: none; color: var(--text); cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+                  <i class="fas fa-user"></i>
+                  <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                </button>
+                <div class="dropdown-menu" style="display: none; position: absolute; top: 100%; right: 0; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0; min-width: 150px; z-index: 1000; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+                  <a href="#" onclick="handleLogout()" style="display: block; padding: 0.5rem 1rem; color: var(--text); text-decoration: none;">Logout</a>
+                </div>
+              </div>
+            </div>
+          `)
+
+          // Add dropdown toggle functionality
+          $('.user-btn').click(function(e) {
+            e.stopPropagation()
+            $('.dropdown-menu').toggle()
+          })
+
+          // Close dropdown when clicking outside
+          $(document).click(function() {
+            $('.dropdown-menu').hide()
+          })
+        } else {
+          // User is not logged in
+          userActions.html(`
+            <a href="./login.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-sign-in-alt"></i>
+              Login
+            </a>
+          `)
+        }
+      })
+      .catch(error => {
+        console.error('Error checking user status:', error)
+        // Fallback to login link
+        $('#userActions').html(`
+          <a href="./login.html" style="color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-sign-in-alt"></i>
+            Login
+          </a>
+        `)
+      })
+  }
+
+  // Global logout function
+  window.handleLogout = function() {
+    fetch('/api/user/logout', { method: 'POST' })
+      .then(() => {
+        updateUserStatus()
+      })
+      .catch(error => {
+        console.error('Logout error:', error)
+        // Force page reload to clear session
+        window.location.reload()
+      })
+  }
+
   // Smooth scrolling for navigation links
   $('a[href*="#"]')
     .not('[href="#"]')
@@ -231,12 +314,11 @@ $(document).ready(function () {
         }
       }
     })
-})
+  })
 
-
-$('#postsGrid').on('click', '.post-title', function(e) {
+  $('#postsGrid').on('click', '.post-title, .read-more', function(e) {
     e.preventDefault();
-    const articleId = $(this).closest('.post-card').data('id');
+    const articleId = $(this).hasClass('read-more') ? $(this).data('id') : $(this).closest('.post-card').data('id');
     window.location.href = `./article-info.html?id=${articleId}`;
 });
 

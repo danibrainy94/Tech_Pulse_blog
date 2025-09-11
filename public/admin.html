@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPulse Admin Dashboard</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-container { max-width: 1000px; margin: 0 auto; padding: 1rem; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+        .admin-title { color: var(--text); font-size: 1.5rem; margin: 0; }
+        .admin-actions { display: flex; gap: 0.5rem; }
+        .btn { padding: 0.4rem 0.8rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; transition: all 0.2s ease; font-size: 0.8rem; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .btn-secondary { background: var(--secondary); color: var(--text); }
+        .btn-secondary:hover { background: var(--border); }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-danger:hover { background: #c82333; }
+        .login-container { max-width: 300px; margin: 2rem auto; padding: 1.5rem; background: var(--card-bg); border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+        .login-title { text-align: center; margin-bottom: 1rem; color: var(--text); font-size: 1.2rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-label { display: block; margin-bottom: 0.3rem; color: var(--text); font-weight: 500; font-size: 0.85rem; }
+        .form-input { width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text); font-size: 0.85rem; }
+        .form-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(102, 153, 179, 0.1); }
+        .form-textarea { resize: vertical; min-height: 80px; }
+        .error-message { color: #dc3545; font-size: 0.75rem; margin-top: 0.3rem; }
+        .success-message { color: #28a745; font-size: 0.75rem; margin-top: 0.3rem; }
+        .posts-list { width: 100%; }
+        .posts-header { display: flex; align-items: center; padding: 0.8rem 0; border-bottom: 2px solid var(--border); font-weight: 600; font-size: 0.8rem; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+        .posts-header .col-image { width: 80px; padding-right: 1rem; }
+        .posts-header .col-title { flex: 1; padding-right: 1.5rem; }
+        .posts-header .col-category { width: 140px; padding-right: 1.5rem; }
+        .posts-header .col-author { width: 120px; padding-right: 1.5rem; }
+        .posts-header .col-date { width: 120px; padding-right: 1.5rem; }
+        .posts-header .col-actions { width: 140px; text-align: center; }
+        .post-row { display: flex; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid var(--border); transition: background-color 0.2s ease; }
+        .post-row:hover { background-color: var(--bg); }
+        .post-row .col-image { width: 80px; padding-right: 1rem; }
+        .post-row .col-title { flex: 1; padding-right: 1.5rem; }
+        .post-row .col-category { width: 140px; padding-right: 1.5rem; }
+        .post-row .col-author { width: 120px; padding-right: 1.5rem; }
+        .post-row .col-date { width: 120px; padding-right: 1.5rem; }
+        .post-row .col-actions { width: 140px; text-align: center; }
+        .post-image { width: 50px; height: 35px; object-fit: cover; border-radius: 4px; }
+        .post-title { font-size: 0.9rem; font-weight: 500; color: var(--text); margin: 0; text-decoration: none; cursor: pointer; }
+        .post-title:hover { color: var(--accent); }
+        .post-category { display: inline-block; padding: 0.25rem 0.6rem; background: var(--accent); color: white; border-radius: 6px; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+        .post-author, .post-date { font-size: 0.8rem; color: var(--text); font-weight: 500; }
+        .post-actions { display: flex; gap: 0.5rem; justify-content: center; }
+        .post-actions .btn { padding: 0.4rem 0.8rem; font-size: 0.7rem; min-width: 60px; }
+        .loading-card { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: var(--card-bg); border-radius: 8px; border: 2px dashed var(--border); }
+        .loading-card .spinner { margin-bottom: 0.8rem; }
+        .loading-card p { color: var(--text-muted); margin: 0; font-size: 0.85rem; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; align-items: center; justify-content: center; }
+        .modal.show { display: flex; }
+        .modal-content { background: var(--card-bg); border-radius: 8px; padding: 1.5rem; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
+        .modal-title { margin: 0; color: var(--text); font-size: 1.1rem; }
+        .modal-close { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted); }
+        .modal-close:hover { color: var(--text); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+        .form-row-full { grid-column: 1 / -1; }
+        .image-preview { max-width: 150px; max-height: 150px; border-radius: 4px; margin-top: 0.3rem; }
+        .tags-input { display: flex; flex-wrap: wrap; gap: 0.3rem; padding: 0.4rem; border: 1px solid var(--border); border-radius: 4px; min-height: 30px; }
+        .tag { background: var(--accent); color: white; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.75rem; }
+        .tag-input { flex: 1; border: none; outline: none; background: transparent; color: var(--text); font-size: 0.8rem; }
+        .loading { text-align: center; padding: 1.5rem; color: var(--text-muted); }
+        .spinner { border: 2px solid var(--border); border-top: 2px solid var(--accent); border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; margin: 0 auto 0.8rem; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .admin-dashboard { min-height: 100vh; background: var(--bg); }
+        .dashboard-header { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .header-left .logo-section { display: flex; align-items: center; gap: 0.8rem; }
+        .logo-section i { font-size: 1.5rem; color: var(--accent); }
+        .dashboard-title { font-size: 1.2rem; font-weight: 700; margin: 0; color: var(--text); }
+        .dashboard-subtitle { margin: 0.2rem 0 0 0; color: var(--text-muted); font-size: 0.75rem; }
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .header-stats { display: flex; gap: 1rem; }
+        .stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0.5rem; background: var(--bg); border-radius: 4px; min-width: 50px; }
+        .stat-item i { font-size: 1rem; color: var(--accent); margin-bottom: 0.2rem; }
+        .stat-item span { font-size: 1rem; font-weight: 700; color: var(--text); }
+        .stat-item small { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.3px; }
+        .header-actions { display: flex; gap: 0.5rem; }
+        .header-actions .btn span { margin-left: 0.3rem; }
+        .dashboard-nav { background: var(--card-bg); border-bottom: 1px solid var(--border); position: sticky; top: 70px; z-index: 90; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; }
+        .nav-item { padding: 0.8rem 1rem; border: none; background: transparent; color: var(--text-muted); cursor: pointer; font-weight: 500; display: flex; align-items: center; gap: 0.3rem; position: relative; transition: all 0.2s ease; border-radius: 4px 4px 0 0; font-size: 0.85rem; }
+        .nav-item:hover:not(.active) { background: var(--bg); color: var(--text); }
+        .nav-item.active { color: var(--accent); background: var(--bg); }
+        .nav-indicator { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--accent); border-radius: 1px 1px 0 0; transition: width 0.2s ease; }
+        .nav-item.active .nav-indicator { width: 60%; }
+        .dashboard-main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .section-header { margin-bottom: 1.5rem; }
+        .section-header h2 { font-size: 1.4rem; font-weight: 700; margin: 0 0 0.3rem 0; color: var(--text); }
+        .section-header p { color: var(--text-muted); margin: 0; font-size: 0.85rem; }
+        .users-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+        .user-card { background: var(--card-bg); border-radius: 8px; padding: 1rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); transition: all 0.2s ease; border: 1px solid var(--border); }
+        .user-card:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
+        .user-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; font-weight: 600; }
+        .user-info h3 { margin: 0 0 0.2rem 0; font-size: 1rem; font-weight: 600; color: var(--text); }
+        .user-email { color: var(--text-muted); font-size: 0.75rem; margin: 0; }
+        .user-status { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.5rem; border-radius: 12px; font-size: 0.65rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+        .status-online { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+        .status-offline { background: rgba(108, 117, 125, 0.1); color: var(--text-muted); }
+        .user-details { margin-bottom: 0.8rem; }
+        .user-detail-item { display: flex; justify-content: space-between; align-items: center; padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
+        .user-detail-item:last-child { border-bottom: none; }
+        .detail-label { font-weight: 500; color: var(--text); font-size: 0.8rem; }
+        .detail-value { color: var(--text-muted); font-size: 0.75rem; }
+        .user-actions { display: flex; gap: 0.5rem; }
+        .user-actions .btn { flex: 1; padding: 0.4rem 0.8rem; font-size: 0.75rem; }
+        .empty-state { text-align: center; padding: 2rem; color: var(--text-muted); }
+        .empty-state i { font-size: 2rem; margin-bottom: 0.8rem; opacity: 0.5; }
+        .empty-state h3 { margin: 0 0 0.3rem 0; color: var(--text); font-size: 1.1rem; }
+        .empty-state p { margin: 0; font-size: 0.85rem; }
+        @media (max-width: 768px) {
+            .admin-container { padding: 0.8rem; }
+            .admin-header { flex-direction: column; gap: 0.8rem; text-align: center; }
+            .admin-tabs { flex-direction: column; }
+            .form-row { grid-template-columns: 1fr; }
+            .posts-table, .users-table { overflow-x: auto; }
+            .action-buttons, .user-actions { flex-direction: column; }
+
+            .header-actions {
+                margin-bottom: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loginContainer" class="login-container">
+        <h2 class="login-title">TechPulse Admin Login</h2>
+        <form id="loginForm">
+            <div class="form-group"><label class="form-label" for="username">Username</label><input type="text" id="username" name="username" class="form-input" required></div>
+            <div class="form-group"><label class="form-label" for="password">Password</label><input type="password" id="password" name="password" class="form-input" required></div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;"><i class="fas fa-sign-in-alt"></i> Login</button>
+            <div id="loginMessage"></div>
+        </form>
+    </div>
+
+    <div id="adminContainer" style="display: none;">
+        <div class="admin-dashboard">
+            <header class="dashboard-header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <div class="logo-section">
+                            <i class="fas fa-crown"></i>
+                            <div><h1 class="dashboard-title">TechPulse Admin</h1><p class="dashboard-subtitle">Content Management System</p></div>
+                        </div>
+                    </div>
+                    <div class="header-right">
+                        <div class="header-stats">
+                            <div class="stat-item"><i class="fas fa-file-alt"></i><span id="postsCount">0</span><small>Posts</small></div>
+                            <div class="stat-item"><i class="fas fa-users"></i><span id="usersCount">0</span><small>Users</small></div>
+                        </div>
+                        <div class="header-actions">
+                            <button id="addPostBtn" class="btn btn-primary"><i class="fas fa-plus"></i><span>New Post</span></button>
+                            <button id="logoutBtn" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i><span>Logout</span></button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <nav class="dashboard-nav">
+                <div class="nav-container">
+                    <button id="postsTab" class="nav-item active"><i class="fas fa-file-alt"></i><span>Posts</span><div class="nav-indicator"></div></button>
+                    <button id="usersTab" class="nav-item"><i class="fas fa-users"></i><span>Users</span><div class="nav-indicator"></div></button>
+                </div>
+            </nav>
+
+            <main class="dashboard-main">
+                <section id="postsSection" class="content-section active">
+                    <div class="section-header"><h2>Content Management</h2><p>Manage your blog posts and articles</p></div>
+                    <div id="postsContainer" class="posts-grid"><div class="loading-card"><div class="spinner"></div><p>Loading posts...</p></div></div>
+                </section>
+
+                <section id="usersSection" class="content-section">
+                    <div class="section-header"><h2>User Management</h2><p>Monitor and manage user accounts</p></div>
+                    <div id="usersContainer" class="users-grid"><div class="loading-card"><div class="spinner"></div><p>Loading users...</p></div></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3 id="modalTitle" class="modal-title">Add New Post</h3><button class="modal-close" id="modalClose">&times;</button></div>
+            <form id="postForm">
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label" for="postTitle">Title *</label><input type="text" id="postTitle" name="title" class="form-input" required></div>
+                    <div class="form-group"><label class="form-label" for="postCategory">Category *</label><select id="postCategory" name="category" class="form-input" required><option value="">Select Category</option><option value="Artificial Intelligence">Artificial Intelligence</option><option value="Web Development">Web Development</option><option value="Cybersecurity">Cybersecurity</option><option value="Blockchain">Blockchain</option><option value="Cloud Computing">Cloud Computing</option><option value="Gadgets">Gadgets</option><option value="Emerging Tech">Emerging Tech</option></select></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label" for="postAuthor">Author *</label><input type="text" id="postAuthor" name="author" class="form-input" required></div>
+                    <div class="form-group"><label class="form-label" for="postAuthorInitials">Author Initials</label><input type="text" id="postAuthorInitials" name="authorInitials" class="form-input" placeholder="e.g., AJ"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label class="form-label" for="postDate">Date *</label><input type="text" id="postDate" name="date" class="form-input" placeholder="e.g., June 15, 2023" required></div>
+                    <div class="form-group"><label class="form-label" for="postImage">Image</label><input type="file" id="postImage" name="image" class="form-input" accept="image/*"><img id="imagePreview" class="image-preview" style="display: none;" alt="Preview"><input type="hidden" id="existingImage" name="existingImage"></div>
+                </div>
+                <div class="form-group"><label class="form-label" for="postExcerpt">Excerpt</label><textarea id="postExcerpt" name="excerpt" class="form-input form-textarea" placeholder="Brief description of the post"></textarea></div>
+                <div class="form-group"><label class="form-label" for="postTags">Tags</label><div class="tags-input" id="tagsContainer"><input type="text" id="tagInput" class="tag-input" placeholder="Type a tag and press Enter"></div><input type="hidden" id="postTags" name="tags"></div>
+                <div class="form-group"><label class="form-label" for="postContent">Content *</label><textarea id="postContent" name="content" class="form-input form-textarea" required></textarea></div>
+                <div style="display: flex; gap: 0.8rem; margin-top: 1.5rem;"><button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Post</button><button type="button" class="btn btn-secondary" id="cancelBtn"><i class="fas fa-times"></i> Cancel</button></div>
+                <div id="formMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentPostId = null;
+        let currentTags = [];
+        
+        // Sample data arrays
+        let samplePosts = [
+            { id: 1, title: "AI Revolution in 2024", category: "Artificial Intelligence", author: "John Doe", date: "Jan 15, 2024", excerpt: "Exploring the latest AI trends", image: "./images/artificial-intelligence.jpg" },
+            { id: 2, title: "React Best Practices", category: "Web Development", author: "Jane Smith", date: "Jan 12, 2024", excerpt: "Modern React development tips", image: "./images/react.jpg" },
+            { id: 3, title: "Cybersecurity Essentials", category: "Cybersecurity", author: "Mike Johnson", date: "Jan 10, 2024", excerpt: "Protecting your digital assets", image: "./images/cyber-security.jpg" },
+            { id: 4, title: "Bitcoin Market Analysis", category: "Blockchain", author: "Sarah Wilson", date: "Jan 8, 2024", excerpt: "Cryptocurrency market insights", image: "./images/bitcoin.jpg" },
+            { id: 5, title: "CSS Grid Mastery", category: "Web Development", author: "Tom Brown", date: "Jan 5, 2024", excerpt: "Advanced CSS layout techniques", image: "./images/css.jpg" },
+            { id: 6, title: "Quantum Computing Basics", category: "Emerging Tech", author: "Lisa Davis", date: "Jan 3, 2024", excerpt: "Introduction to quantum computing", image: "./images/quantum-computing.jpg" },
+            { id: 7, title: "Smart Wearables 2024", category: "Gadgets", author: "Alex Chen", date: "Jan 1, 2024", excerpt: "Latest in wearable technology", image: "./images/smartwatch-8300238_1280.jpg" },
+            { id: 8, title: "Server Architecture", category: "Cloud Computing", author: "David Lee", date: "Dec 28, 2023", excerpt: "Building scalable server systems", image: "./images/server.jpg" }
+        ];
+
+        let sampleUsers = [
+            { id: 1, name: "John Doe", email: "john@example.com", is_online: true, last_login: "2024-01-15T10:30:00Z", created_at: "2023-12-01T00:00:00Z" },
+            { id: 2, name: "Jane Smith", email: "jane@example.com", is_online: false, last_login: "2024-01-14T15:45:00Z", created_at: "2023-11-15T00:00:00Z" },
+            { id: 3, name: "Mike Johnson", email: "mike@example.com", is_online: true, last_login: "2024-01-15T09:20:00Z", created_at: "2023-10-20T00:00:00Z" }
+        ];
+
+        const loginContainer = document.getElementById('loginContainer');
+        const adminContainer = document.getElementById('adminContainer');
+        const loginForm = document.getElementById('loginForm');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const addPostBtn = document.getElementById('addPostBtn');
+        const postModal = document.getElementById('postModal');
+        const postForm = document.getElementById('postForm');
+        const modalClose = document.getElementById('modalClose');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const imageInput = document.getElementById('postImage');
+        const imagePreview = document.getElementById('imagePreview');
+        const tagInput = document.getElementById('tagInput');
+        const tagsContainer = document.getElementById('tagsContainer');
+        const postsTab = document.getElementById('postsTab');
+        const usersTab = document.getElementById('usersTab');
+        const postsSection = document.getElementById('postsSection');
+        const usersSection = document.getElementById('usersSection');
+
+        checkAuthStatus();
+        loadSamplePosts();
+
+        setInterval(() => {
+            if (adminContainer.style.display !== 'none') {
+                updateUserStatuses();
+                cleanupInactiveSessions();
+            }
+        }, 30000);
+
+        loginForm.addEventListener('submit', handleLogin);
+        logoutBtn.addEventListener('click', handleLogout);
+        addPostBtn.addEventListener('click', () => openModal());
+        modalClose.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+        postForm.addEventListener('submit', handlePostSubmit);
+        imageInput.addEventListener('change', handleImagePreview);
+        tagInput.addEventListener('keydown', handleTagInput);
+        postsTab.addEventListener('click', () => switchTab('posts'));
+        usersTab.addEventListener('click', () => switchTab('users'));
+
+        function switchTab(tab) {
+            postsTab.classList.remove('active');
+            usersTab.classList.remove('active');
+            postsSection.classList.remove('active');
+            usersSection.classList.remove('active');
+            if (tab === 'posts') {
+                postsTab.classList.add('active');
+                postsSection.classList.add('active');
+            } else if (tab === 'users') {
+                usersTab.classList.add('active');
+                usersSection.classList.add('active');
+                loadSampleUsers();
+            }
+        }
+
+        function loadSampleUsers() {
+            renderUsersTable(sampleUsers);
+            updateCounters();
+        }
+
+        async function loadUsers() {
+            const usersContainer = document.getElementById('usersContainer');
+            usersContainer.innerHTML = `<div class="loading"><div class="spinner"></div>Loading users...</div>`;
+            try {
+                const response = await fetch('/api/admin/users');
+                const data = await response.json();
+                if (response.ok) {
+                    renderUsersTable(data.users);
+                } else {
+                    usersContainer.innerHTML = `<div class="error-message">Failed to load users: ${data.error}</div>`;
+                }
+            } catch (error) {
+                console.error('Error loading users:', error);
+                usersContainer.innerHTML = '<div class="error-message">Failed to load users. Please try again.</div>';
+            }
+        }
+
+        function deleteSampleUser(userId, userName) {
+            if (confirm(`Are you sure you want to delete user "${userName}"?`)) {
+                sampleUsers = sampleUsers.filter(user => user.id !== userId);
+                loadSampleUsers();
+            }
+        }
+
+        function deleteSamplePost(postId, postTitle) {
+            if (confirm(`Are you sure you want to delete "${postTitle}"?`)) {
+                samplePosts = samplePosts.filter(post => post.id !== postId);
+                loadSamplePosts();
+            }
+        }
+
+        function renderUsersTable(users) {
+            const usersContainer = document.getElementById('usersContainer');
+            if (users.length === 0) {
+                usersContainer.innerHTML = `<div class="empty-state"><i class="fas fa-users"></i><h3>No users found</h3><p>No user accounts have been registered yet.</p></div>`;
+                return;
+            }
+            const cardsHtml = users.map(user => `
+                <div class="user-card">
+                    <div class="user-header">
+                        <div class="user-avatar">${user.name.charAt(0).toUpperCase()}</div>
+                        <div class="user-info"><h3>${user.name}</h3><p class="user-email">${user.email}</p></div>
+                    </div>
+                    <div class="user-status status-${user.is_online ? 'online' : 'offline'}"><i class="fas fa-circle"></i><span>${user.is_online ? 'Online' : 'Offline'}</span></div>
+                    <div class="user-details">
+                        <div class="user-detail-item"><span class="detail-label">Last Login</span><span class="detail-value">${user.last_login ? new Date(user.last_login).toLocaleString() : 'Never'}</span></div>
+                        <div class="user-detail-item"><span class="detail-label">Joined</span><span class="detail-value">${new Date(user.created_at).toLocaleDateString()}</span></div>
+                    </div>
+                    <div class="user-actions"><button class="btn btn-danger" onclick="deleteSampleUser(${user.id}, '${user.name}')"><i class="fas fa-trash"></i><span>Delete</span></button></div>
+                </div>
+            `).join('');
+            usersContainer.innerHTML = `<div class="users-grid">${cardsHtml}</div>`;
+        }
+
+        async function deleteUser(userId, userName) {
+            if (confirm(`Are you sure you want to delete user "${userName}"?`)) {
+                try {
+                    const response = await fetch(`/api/admin/users/${userId}`, { method: 'DELETE' });
+                    if (response.ok) {
+                        loadUsers();
+                    } else {
+                        const data = await response.json();
+                        alert(`Failed to delete user: ${data.error}`);
+                    }
+                } catch (error) {
+                    console.error('Error deleting user:', error);
+                    alert('Failed to delete user. Please try again.');
+                }
+            }
+        }
+
+        async function updateUserStatuses() {
+            if (usersSection.classList.contains('active')) {
+                await loadUsers();
+            }
+        }
+
+        async function cleanupInactiveSessions() {
+            try {
+                await fetch('/api/admin/cleanup-sessions', { method: 'POST' });
+            } catch (error) {
+                console.error('Error cleaning up sessions:', error);
+            }
+        }
+
+        async function checkAuthStatus() {
+            try {
+                // First check server-side session
+                const response = await fetch('/api/auth/status');
+                const data = await response.json();
+
+                if (data.authenticated) {
+                    showAdminDashboard();
+                    loadPosts();
+                    loadUsers();
+                } else {
+                    // Check localStorage as fallback
+                    const isAdminLoggedIn = localStorage.getItem('isAdminLoggedIn');
+                    const adminUsername = localStorage.getItem('adminUsername');
+
+                    if (isAdminLoggedIn === 'true' && adminUsername) {
+                        // Try to re-authenticate with stored credentials
+                        console.log('Attempting to restore admin session...');
+                        showLoginForm();
+                        // You could implement auto-login here if needed
+                    } else {
+                        showLoginForm();
+                    }
+                }
+            } catch (error) {
+                console.error('Error checking auth status:', error);
+                // Fallback to localStorage check
+                const isAdminLoggedIn = localStorage.getItem('isAdminLoggedIn');
+                if (isAdminLoggedIn === 'true') {
+                    showAdminDashboard();
+                    loadPosts();
+                    loadUsers();
+                } else {
+                    showLoginForm();
+                }
+            }
+        }
+
+        function showLoginForm() {
+            loginContainer.style.display = 'block';
+            adminContainer.style.display = 'none';
+        }
+
+        function showAdminDashboard() {
+            loginContainer.style.display = 'none';
+            adminContainer.style.display = 'block';
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const formData = new FormData(loginForm);
+            const loginMessage = document.getElementById('loginMessage');
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: formData.get('username'),
+                        password: formData.get('password')
+                    })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    loginMessage.innerHTML = '<div class="success-message">Login successful!</div>';
+                    setTimeout(() => {
+                        showAdminDashboard();
+                        loadPosts();
+                        loadUsers();
+                    }, 1000);
+                } else {
+                    loginMessage.innerHTML = `<div class="error-message">${data.error}</div>`;
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                loginMessage.innerHTML = '<div class="error-message">Login failed. Please try again.</div>';
+            }
+        }
+
+        async function handleLogout() {
+            try {
+                // Make API call to logout endpoint
+                const response = await fetch('/api/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Clear local storage
+                    localStorage.removeItem('isAdminLoggedIn');
+                    localStorage.removeItem('adminUsername');
+
+                    // Show success message
+                    alert('Logged out successfully!');
+
+                    // Redirect to login page
+                    window.location.href = './login.html';
+                } else {
+                    console.error('Logout failed on server');
+                    // Still redirect to login page even if server logout fails
+                    window.location.href = './login.html';
+                }
+            } catch (error) {
+                console.error('Logout error:', error);
+                // Fallback: still redirect even if there's an error
+                window.location.href = './login.html';
+            }
+        }
+
+        function loadSamplePosts() {
+            renderPostsTable(samplePosts);
+            updateCounters();
+        }
+
+        function updateCounters() {
+            document.getElementById('postsCount').textContent = samplePosts.length;
+            document.getElementById('usersCount').textContent = sampleUsers.length;
+        }
+
+        async function loadPosts() {
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = `<div class="loading"><div class="spinner"></div>Loading posts...</div>`;
+            try {
+                const response = await fetch('/api/posts');
+                const data = await response.json();
+                if (response.ok) {
+                    renderPostsTable(data.articles);
+                } else {
+                    postsContainer.innerHTML = `<div class="error-message">Failed to load posts: ${data.error}</div>`;
+                }
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                postsContainer.innerHTML = '<div class="error-message">Failed to load posts. Please try again.</div>';
+            }
+        }
+
+        function renderPostsTable(posts) {
+            const postsContainer = document.getElementById('postsContainer');
+            if (posts.length === 0) {
+                postsContainer.innerHTML = `<div class="empty-state"><i class="fas fa-file-alt"></i><h3>No posts found</h3><p>Create your first post to get started!</p></div>`;
+                return;
+            }
+            const rowsHtml = posts.map(post => `
+                <div class="post-row">
+                    <div class="col-image">${post.image ? `<img src="${post.image}" alt="${post.title}" class="post-image">` : `<div class="post-image" style="background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem;"><i class="fas fa-file-alt"></i></div>`}</div>
+                    <div class="col-title"><h3 class="post-title" onclick="viewPost(${post.id})">${post.title}</h3></div>
+                    <div class="col-category"><span class="post-category">${post.category}</span></div>
+                    <div class="col-author"><span class="post-author">${post.author}</span></div>
+                    <div class="col-date"><span class="post-date">${post.date}</span></div>
+                    <div class="col-actions">
+                        <div class="post-actions">
+                            <button class="btn btn-secondary" onclick="editPost(${post.id})" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger" onclick="deleteSamplePost(${post.id}, '${post.title}')" title="Delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            postsContainer.innerHTML = `
+                <div class="posts-list">
+                    <div class="posts-header">
+                        <div class="col-image">Image</div>
+                        <div class="col-title">Title</div>
+                        <div class="col-category">Category</div>
+                        <div class="col-author">Author</div>
+                        <div class="col-date">Date</div>
+                        <div class="col-actions">Actions</div>
+                    </div>
+                    ${rowsHtml}
+                </div>
+            `;
+        }
+
+        function openModal(postId = null) {
+            currentPostId = postId;
+            document.getElementById('modalTitle').textContent = postId ? 'Edit Post' : 'Add New Post';
+            postModal.classList.add('show');
+            if (postId) {
+                loadPostForEdit(postId);
+            } else {
+                resetForm();
+            }
+        }
+
+        function closeModal() {
+            postModal.classList.remove('show');
+            resetForm();
+        }
+
+        function resetForm() {
+            postForm.reset();
+            currentTags = [];
+            updateTagsDisplay();
+            imagePreview.style.display = 'none';
+            document.getElementById('existingImage').value = '';
+            document.getElementById('formMessage').innerHTML = '';
+        }
+
+        async function loadPostForEdit(postId) {
+            try {
+                const response = await fetch(`/api/posts/${postId}`);
+                const post = await response.json();
+                if (response.ok) {
+                    document.getElementById('postTitle').value = post.title;
+                    document.getElementById('postCategory').value = post.category;
+                    document.getElementById('postAuthor').value = post.author;
+                    document.getElementById('postAuthorInitials').value = post.author_initials || '';
+                    document.getElementById('postDate').value = post.date;
+                    document.getElementById('postExcerpt').value = post.excerpt || '';
+                    document.getElementById('postContent').value = post.content;
+                    if (post.image) {
+                        imagePreview.src = post.image;
+                        imagePreview.style.display = 'block';
+                        document.getElementById('existingImage').value = post.image;
+                    }
+                    currentTags = post.tags || [];
+                    updateTagsDisplay();
+                } else {
+                    alert('Failed to load post for editing');
+                }
+            } catch (error) {
+                console.error('Error loading post:', error);
+                alert('Failed to load post for editing');
+            }
+        }
+
+        async function handlePostSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(postForm);
+            formData.set('tags', JSON.stringify(currentTags));
+            const url = currentPostId ? `/api/posts/${currentPostId}` : '/api/posts';
+            const method = currentPostId ? 'PUT' : 'POST';
+            const formMessage = document.getElementById('formMessage');
+            try {
+                const response = await fetch(url, { method: method, body: formData });
+                const data = await response.json();
+                if (response.ok) {
+                    formMessage.innerHTML = '<div class="success-message">Post saved successfully!</div>';
+                    setTimeout(() => {
+                        closeModal();
+                        loadPosts();
+                    }, 1000);
+                } else {
+                    formMessage.innerHTML = `<div class="error-message">${data.error}</div>`;
+                }
+            } catch (error) {
+                console.error('Error saving post:', error);
+                formMessage.innerHTML = '<div class="error-message">Failed to save post. Please try again.</div>';
+            }
+        }
+
+        function handleImagePreview(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function handleTagInput(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const tagValue = tagInput.value.trim();
+                if (tagValue && !currentTags.includes(tagValue)) {
+                    currentTags.push(tagValue);
+                    updateTagsDisplay();
+                    tagInput.value = '';
+                }
+            }
+        }
+
+        function updateTagsDisplay() {
+            const tagsHtml = currentTags.map(tag => `<span class="tag">${tag}<button type="button" onclick="removeTag('${tag}')" style="margin-left: 0.3rem; background: none; border: none; color: white; cursor: pointer;">&times;</button></span>`).join('');
+            tagsContainer.innerHTML = tagsHtml + '<input type="text" id="tagInput" class="tag-input" placeholder="Type a tag and press Enter">';
+            document.getElementById('tagInput').addEventListener('keydown', handleTagInput);
+        }
+
+        function removeTag(tagToRemove) {
+            currentTags = currentTags.filter(tag => tag !== tagToRemove);
+            updateTagsDisplay();
+        }
+
+        async function editPost(postId) {
+            openModal(postId);
+        }
+
+        async function deletePost(postId, postTitle) {
+            // For sample data, use the sample delete function
+            deleteSamplePost(postId, postTitle);
+        }
+
+        function viewPost(postId) {
+            window.open(`./article-info.html?id=${postId}`, '_blank');
+        }
+
+        postModal.addEventListener('click', (e) => {
+            if (e.target === postModal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

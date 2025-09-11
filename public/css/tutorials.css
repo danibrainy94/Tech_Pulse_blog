@@ -193,6 +193,56 @@ nav a:hover::after {
   transform: scale(1.1);
 }
 
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.user-btn {
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.user-btn:hover {
+  color: var(--accent);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid rgba(102, 153, 155, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  min-width: 150px;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.dropdown-menu a:hover {
+  background: rgba(102, 153, 155, 0.1);
+  color: var(--accent);
+}
+
 /* Hero Section */
 .hero {
   min-height: 30vh;
@@ -509,6 +559,15 @@ nav a:hover::after {
     justify-content: center;
   }
 
+  .header-actions {
+    gap: 1rem;
+    margin-bottom: 1em;
+  }
+
+  .user-menu {
+    gap: 0.5rem;
+  }
+
   .hero h1 {
     font-size: 2.2rem;
   }
@@ -517,6 +576,11 @@ nav a:hover::after {
 @media (max-width: 576px) {
   .container {
     padding: 0 1.2rem;
+  }
+
+  .header-actions {
+    gap: 0.8rem;
+    margin-bottom: 1em;
   }
 
   .hero h1 {

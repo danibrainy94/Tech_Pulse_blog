@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Email | TechPulse</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .test-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .test-header i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .test-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .success { background: rgba(40, 167, 69, 0.1); color: #28a745; border: 1px solid rgba(40, 167, 69, 0.2); }
+        .info { background: rgba(102, 153, 155, 0.1); color: var(--accent); border: 1px solid rgba(102, 153, 155, 0.2); }
+        .error { background: rgba(220, 53, 69, 0.1); color: #dc3545; border: 1px solid rgba(220, 53, 69, 0.2); }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .email-status {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .email-status.success {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.2);
+        }
+
+        .email-status.warning {
+            background: rgba(255, 193, 7, 0.1);
+            color: #856404;
+            border: 1px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .email-status.error {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <i class="fas fa-envelope"></i>
+            <h1>Test Email Configuration</h1>
+            <p>Send a test email to verify your email setup</p>
+            <div id="emailStatus" class="email-status">
+                <i class="fas fa-spinner fa-spin"></i> Checking email configuration...
+            </div>
+        </div>
+
+        <form id="testEmailForm">
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <input type="email" id="testEmail" placeholder=" " required>
+                    <label for="testEmail">
+                        <i class="fas fa-envelope"></i> Test Email Address
+                    </label>
+                    <div class="input-focus-line"></div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <span class="btn-text">
+                    <i class="fas fa-paper-plane"></i> Send Test Email
+                </span>
+                <div class="btn-loader">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+            </button>
+        </form>
+
+        <div id="testResult" class="test-result"></div>
+
+        <div style="text-align: center;">
+            <a href="./index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Check email status on page load
+            checkEmailStatus();
+
+            $('#testEmailForm').submit(function(e) {
+                e.preventDefault();
+
+                const email = $('#testEmail').val().trim();
+                const resultDiv = $('#testResult');
+                const submitBtn = $(this).find('button[type="submit"]');
+
+                // Clear previous results
+                resultDiv.hide().removeClass('success info error');
+
+                // Show loading
+                submitBtn.addClass('loading').prop('disabled', true);
+
+                // Send test email
+                fetch('/api/test-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    submitBtn.removeClass('loading').prop('disabled', false);
+
+                    if (data.message.includes('sent successfully')) {
+                        resultDiv.addClass('success').html(`
+                            <i class="fas fa-check-circle"></i>
+                            <strong>Success!</strong> ${data.message}
+                            <br><small>${data.note}</small>
+                        `);
+                    } else {
+                        resultDiv.addClass('info').html(`
+                            <i class="fas fa-info-circle"></i>
+                            <strong>Test Mode:</strong> ${data.message}
+                            <br><small>${data.note}</small>
+                            ${data.testCode ? `<br><strong>Test Code: ${data.testCode}</strong>` : ''}
+                        `);
+                    }
+
+                    resultDiv.show();
+                })
+                .catch(error => {
+                    console.error('Test email error:', error);
+                    submitBtn.removeClass('loading').prop('disabled', false);
+
+                    resultDiv.addClass('error').html(`
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>Error:</strong> Failed to send test email. Check console for details.
+                    `).show();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
